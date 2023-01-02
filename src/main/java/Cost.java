@@ -1,12 +1,16 @@
 public class Cost {
 
-    public static final int MINIMUM_VALUE = 1;
+    public static final int MINIMUM_VALUE = 0;
 
     private final int value;
 
     public Cost(int value) {
         validateRange(value);
         this.value = value;
+    }
+
+    public int countAvailablePurchases(int price) {
+        return value / price;
     }
 
     private void validateRange(int value) {
