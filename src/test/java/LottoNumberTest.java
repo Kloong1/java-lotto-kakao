@@ -14,7 +14,7 @@ public class LottoNumberTest {
 
     @Test
     @DisplayName("범위 밖의 로또 번호를 입력하면 예외가 발생한다.")
-    void name() {
+    void validateRange_throw() {
         assertThatIllegalArgumentException().isThrownBy(() -> new LottoNumber(50));
     }
 }
