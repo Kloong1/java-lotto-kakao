@@ -13,6 +13,10 @@ public class LottoTicket {
         this.lottoNumbers = new ArrayList<>(lottoNumbers);
     }
 
+    public List<LottoNumber> getLottoNumbers() {
+        return lottoNumbers;
+    }
+
     private void validateSize(List<LottoNumber> lottoNumbers) {
         if (lottoNumbers.size() != LOTTO_NUMBERS_SIZE) {
             throw new IllegalArgumentException("로또 번호는 6개여야 합니다.");
@@ -20,11 +24,8 @@ public class LottoTicket {
     }
 
     private void validateDuplicates(List<LottoNumber> lottoNumbers) {
-        long distinctCount = lottoNumbers.stream()
-                .distinct()
-                .count();
-        if (distinctCount < lottoNumbers.size()) {
-            throw new IllegalStateException("중복된 로또 번호가 있습니다.");
+        if (ListUtils.hasDuplicates(lottoNumbers)) {
+            throw new IllegalArgumentException("중복된 로또 번호가 있습니다.");
         }
     }
 }

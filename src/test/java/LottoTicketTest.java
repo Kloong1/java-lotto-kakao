@@ -17,7 +17,7 @@ public class LottoTicketTest {
                 new LottoNumber(4),
                 new LottoNumber(5)
         );
-        
+
         Assertions.assertThatIllegalArgumentException()
                 .isThrownBy(() -> new LottoTicket(lottoNumbers));
     }
@@ -34,7 +34,7 @@ public class LottoTicketTest {
                 new LottoNumber(5)
         );
 
-        Assertions.assertThatIllegalStateException()
+        Assertions.assertThatIllegalArgumentException()
                 .isThrownBy(() -> new LottoTicket(lottoNumbers));
     }
 }
