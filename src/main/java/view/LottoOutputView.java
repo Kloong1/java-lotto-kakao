@@ -2,7 +2,7 @@ package view;
 
 import domain.lotto.LottoNumber;
 import domain.lotto.LottoPrize;
-import domain.lotto.LottoResult;
+import domain.lotto.LottoPrizeResult;
 import domain.lotto.LottoTicket;
 
 import java.util.List;
@@ -17,11 +17,11 @@ public class LottoOutputView {
                 .forEach(this::printLottoNumbers);
     }
 
-    public void printLottoResult(LottoResult lottoResult) {
+    public void printLottoResult(LottoPrizeResult lottoPrizeResult) {
         System.out.println("\n당첨 통계");
         System.out.println("----------");
-        printPrizeCount(lottoResult.getPrizeCounts());
-        printEarningRate(lottoResult.getEarningRate());
+        printPrizeCount(lottoPrizeResult.getPrizeCounts());
+        printEarningRate(lottoPrizeResult.getEarningRate());
     }
 
     private void printPrizeCount(Map<LottoPrize, Integer> prizeCounts) {

@@ -15,11 +15,11 @@ public class LottoResultCalculator {
         this.lottoWinningNumber = lottoWinningNumber;
     }
 
-    public LottoResult calculateLottoResult() {
+    public LottoPrizeResult calculateLottoResult() {
         double earningRate = calculateEarningRate();
         Map<LottoPrize, Integer> prizeCounts = countLottoPrize();
 
-        return new LottoResult(prizeCounts, earningRate);
+        return new LottoPrizeResult(prizeCounts, earningRate);
     }
 
     private Map<LottoPrize, Integer> countLottoPrize() {
