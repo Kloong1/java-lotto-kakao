@@ -15,6 +15,6 @@ public class NoneLottoPrizeJudgment implements LottoPrizeJudgment {
         List<LottoNumber> lottoNumbers = lottoTicket.getLottoNumbers();
         List<LottoNumber> winningNumbers = lottoWinningNumber.getLottoNumbers();
 
-        return ListUtils.countCommonElements(lottoNumbers, winningNumbers) <= 1;
+        return ListUtils.countCommonElements(lottoNumbers, winningNumbers) <= 2;
     }
 }

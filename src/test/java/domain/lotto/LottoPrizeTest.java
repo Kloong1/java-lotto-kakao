@@ -62,7 +62,7 @@ class LottoPrizeTest {
                 .isEqualTo(LottoPrize.SECOND_PRIZE);
     }
 
-    @DisplayName("4개 맞으면 3등이다.")
+    @DisplayName("5개 맞으면 3등이다.")
     @Test
     void thirdPrize() {
         lottoTicket = new LottoTicket(Arrays.asList(
@@ -70,7 +70,7 @@ class LottoPrizeTest {
                 new LottoNumber(2),
                 new LottoNumber(3),
                 new LottoNumber(4),
-                new LottoNumber(40),
+                new LottoNumber(5),
                 new LottoNumber(41)
         ));
 
@@ -79,14 +79,14 @@ class LottoPrizeTest {
                 .isEqualTo(LottoPrize.THIRD_PRIZE);
     }
 
-    @DisplayName("3개 맞으면 4등이다.")
+    @DisplayName("4개 맞으면 4등이다.")
     @Test
     void fourthPrize() {
         lottoTicket = new LottoTicket(Arrays.asList(
                 new LottoNumber(1),
                 new LottoNumber(2),
                 new LottoNumber(3),
-                new LottoNumber(40),
+                new LottoNumber(4),
                 new LottoNumber(41),
                 new LottoNumber(42)
         ));
@@ -96,13 +96,13 @@ class LottoPrizeTest {
                 .isEqualTo(LottoPrize.FOURTH_PRIZE);
     }
 
-    @DisplayName("2개 맞으면 5등이다.")
+    @DisplayName("3개 맞으면 5등이다.")
     @Test
     void fifthPrize() {
         lottoTicket = new LottoTicket(Arrays.asList(
                 new LottoNumber(1),
                 new LottoNumber(2),
-                new LottoNumber(40),
+                new LottoNumber(3),
                 new LottoNumber(41),
                 new LottoNumber(42),
                 new LottoNumber(43)
@@ -113,12 +113,12 @@ class LottoPrizeTest {
                 .isEqualTo(LottoPrize.FIFTH_PRIZE);
     }
 
-    @DisplayName("1개 이하로 맞으면 꽝이다.")
+    @DisplayName("2개 이하로 맞으면 꽝이다.")
     @Test
     void nonePrize() {
         lottoTicket = new LottoTicket(Arrays.asList(
                 new LottoNumber(1),
-                new LottoNumber(39),
+                new LottoNumber(2),
                 new LottoNumber(40),
                 new LottoNumber(41),
                 new LottoNumber(42),

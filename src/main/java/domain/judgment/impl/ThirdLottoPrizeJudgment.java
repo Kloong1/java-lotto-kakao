@@ -15,6 +15,6 @@ public class ThirdLottoPrizeJudgment implements LottoPrizeJudgment {
         List<LottoNumber> lottoNumbers = lottoTicket.getLottoNumbers();
         List<LottoNumber> winningNumbers = lottoWinningNumber.getLottoNumbers();
 
-        return ListUtils.countCommonElements(lottoNumbers, winningNumbers) == 4;
+        return ListUtils.countCommonElements(lottoNumbers, winningNumbers) == 5;
     }
 }
