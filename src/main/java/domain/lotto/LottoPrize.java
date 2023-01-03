@@ -3,8 +3,6 @@ package domain.lotto;
 import domain.judgment.LottoPrizeJudgment;
 import domain.judgment.impl.*;
 
-import java.util.Arrays;
-
 public enum LottoPrize {
 
     FIRST_PRIZE(2_000_000_000, new FirstLottoPrizeJudgment()),
@@ -25,12 +23,4 @@ public enum LottoPrize {
     public int getPrizeMoney() {
         return prizeMoney;
     }
-
-    public static LottoPrize findPrize(LottoTicket lottoTicket, LottoWinningNumber lottoWinningNumber) {
-        return Arrays.stream(values())
-                .filter(e -> e.prizeJudgment.judge(lottoTicket, lottoWinningNumber))
-                .findFirst()
-                .orElseThrow(IllegalStateException::new);
-    }
-
 }
