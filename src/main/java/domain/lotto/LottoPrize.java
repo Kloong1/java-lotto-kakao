@@ -15,7 +15,7 @@ public enum LottoPrize {
     NONE_PRIZE(0, new NoneLottoPrizeJudgment());
 
     private final int prizeMoney;
-    private final LottoPrizeJudgment prizeJudgment;
+    public final LottoPrizeJudgment prizeJudgment;
 
     LottoPrize(int prizeMoney, LottoPrizeJudgment prizeJudgment) {
         this.prizeMoney = prizeMoney;
