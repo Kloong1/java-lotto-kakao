@@ -53,4 +53,12 @@ public class LottoPrizeResultTest {
         assertThat(Math.floor(result.getEarningRate() * floor))
                 .isEqualTo(Math.floor(result.getEarningRate() * floor));
     }
+
+    @DisplayName("로또 구매 횟수가 0 이하이면 예외가 발생한다")
+    @ParameterizedTest
+    @ValueSource(ints = {0, -100})
+    void calculateEarningRate_throw(int lottoPurchaseCount) {
+        LottoPrizeResult lottoPrizeResult = new LottoPrizeResult(prizeCounts);
+        assertThatIllegalArgumentException().isThrownBy(() -> lottoPrizeResult.calculateEarningRate(lottoPurchaseCount));
+    }
 }
