@@ -14,14 +14,13 @@ public enum LottoPrize {
     FIFTH_PRIZE(5_000, new FifthLottoPrizeJudgment()),
     NONE_PRIZE(0, new NoneLottoPrizeJudgment());
 
+    private final int prizeMoney;
+    private final LottoPrizeJudgment prizeJudgment;
+
     LottoPrize(int prizeMoney, LottoPrizeJudgment prizeJudgment) {
         this.prizeMoney = prizeMoney;
         this.prizeJudgment = prizeJudgment;
     }
-
-    private final int prizeMoney;
-
-    private final LottoPrizeJudgment prizeJudgment;
 
     public int getPrizeMoney() {
         return prizeMoney;
