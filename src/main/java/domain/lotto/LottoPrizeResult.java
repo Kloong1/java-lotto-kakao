@@ -2,6 +2,7 @@ package domain.lotto;
 
 import java.util.Arrays;
 import java.util.Map;
+import java.util.Objects;
 
 public class LottoPrizeResult {
 
@@ -45,10 +46,21 @@ public class LottoPrizeResult {
     }
 
     private void validatePrizeCounts(Map<LottoPrize, Integer> prizeCounts) {
-        boolean hasMissingPrize = Arrays.stream(LottoPrize.values())
-                .anyMatch(lottoPrize -> !prizeCounts.containsKey(lottoPrize));
-        if (hasMissingPrize) {
+        if (prizeCounts.size() != LottoPrize.values().length) {
             throw new IllegalArgumentException();
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        LottoPrizeResult that = (LottoPrizeResult) o;
+        return Objects.equals(prizeCounts, that.prizeCounts);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(prizeCounts);
     }
 }
