@@ -4,15 +4,19 @@ public class Cost {
 
     public static final int MINIMUM_VALUE = 0;
 
-    private final int value;
+    private final int cost;
 
-    public Cost(int value) {
-        validateRange(value);
-        this.value = value;
+    public Cost(int cost) {
+        validateRange(cost);
+        this.cost = cost;
+    }
+
+    public int getCost() {
+        return cost;
     }
 
     public int countAvailablePurchases(int price) {
-        return value / price;
+        return cost / price;
     }
 
     private void validateRange(int value) {
