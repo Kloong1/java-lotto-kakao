@@ -1,9 +1,6 @@
 package view;
 
-import domain.lotto.LottoNumber;
-import domain.lotto.LottoPrize;
-import domain.lotto.LottoPrizeResult;
-import domain.lotto.LottoTicket;
+import domain.lotto.*;
 
 import java.util.List;
 import java.util.Map;
@@ -17,11 +14,11 @@ public class LottoOutputView {
                 .forEach(this::printLottoNumbers);
     }
 
-    public void printLottoResult(LottoPrizeResult lottoPrizeResult) {
+    public void printLottoResult(Map<LottoPrize, Integer> prizeCounts, LottoEarningRate lottoEarningRate) {
         System.out.println("\n당첨 통계");
         System.out.println("----------");
-        printPrizeCount(lottoPrizeResult.getPrizeCounts());
-        printEarningRate(lottoPrizeResult.getEarningRate());
+        printPrizeCount(prizeCounts);
+        printEarningRate(lottoEarningRate);
     }
 
     private void printPrizeCount(Map<LottoPrize, Integer> prizeCounts) {
@@ -49,7 +46,7 @@ public class LottoOutputView {
         System.out.println("[" + numbers + "]");
     }
 
-    private void printEarningRate(double earningRate) {
-        System.out.printf("총 수익률은 %.2f입니다.\n", earningRate);
+    private void printEarningRate(LottoEarningRate lottoEarningRate) {
+        System.out.printf("총 수익률은 %.2f입니다.\n", lottoEarningRate.getEarningRate());
     }
 }
