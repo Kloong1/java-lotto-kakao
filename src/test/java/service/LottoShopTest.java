@@ -1,9 +1,13 @@
-package domain.lotto;
+package service;
 
+import domain.lotto.Cost;
+import domain.lotto.LottoTicket;
+import domain.lotto.LottoTicketRandomGenerator;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import service.LottoShop;
 
 import java.util.List;
 

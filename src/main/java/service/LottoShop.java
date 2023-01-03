@@ -1,4 +1,8 @@
-package domain.lotto;
+package service;
+
+import domain.lotto.Cost;
+import domain.lotto.LottoTicket;
+import domain.lotto.LottoTicketGenerator;
 
 import java.util.ArrayList;
 import java.util.List;

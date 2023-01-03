@@ -1,7 +1,9 @@
 package controller;
 
-import domain.LottoPrizeCounter;
+import service.LottoPrizeCounter;
 import domain.lotto.*;
+import service.LottoPrizeResult;
+import service.LottoShop;
 import view.LottoInputView;
 import view.LottoOutputView;
 
@@ -18,6 +20,7 @@ public class LottoController {
         List<LottoTicket> lottoTickets = lottoShop.buyLottoTickets(cost);
         lottoOutputView.printLottoTickets(lottoTickets);
         LottoWinningNumber lottoWinningNumber = lottoInputView.readWinningNumber();
+
         LottoPrizeCounter lottoPrizeCounter = new LottoPrizeCounter(lottoWinningNumber);
         LottoPrizeResult lottoPrizeResult = lottoPrizeCounter.countPrize(lottoTickets);
         LottoEarningRate lottoEarningRate = lottoPrizeResult.calculateEarningRate(lottoTickets.size());

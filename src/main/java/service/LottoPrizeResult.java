@@ -1,4 +1,7 @@
-package domain.lotto;
+package service;
+
+import domain.lotto.LottoEarningRate;
+import domain.lotto.LottoPrize;
 
 import java.util.Map;
 import java.util.Objects;
