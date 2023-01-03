@@ -113,4 +113,21 @@ class LottoPrizeTest {
                 .isEqualTo(LottoPrize.FIFTH_PRIZE);
     }
 
+    @DisplayName("1개 이하로 맞으면 꽝이다.")
+    @Test
+    void nonePrize() {
+        lottoTicket = new LottoTicket(Arrays.asList(
+                new LottoNumber(1),
+                new LottoNumber(39),
+                new LottoNumber(40),
+                new LottoNumber(41),
+                new LottoNumber(42),
+                new LottoNumber(43)
+        ));
+
+        LottoPrize prize = LottoPrize.findPrize(lottoTicket, lottoWinningNumber);
+        Assertions.assertThat(prize)
+                .isEqualTo(LottoPrize.NONE_PRIZE);
+    }
+
 }

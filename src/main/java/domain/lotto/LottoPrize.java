@@ -11,7 +11,8 @@ public enum LottoPrize {
     SECOND_PRIZE(30_000_000, new SecondLottoPrizeJudgment()),
     THIRD_PRIZE(1_500_000, new ThirdLottoPrizeJudgment()),
     FOURTH_PRIZE(50_000, new FourthLottoPrizeJudgment()),
-    FIFTH_PRIZE(5_000, new FifthLottoPrizeJudgment());
+    FIFTH_PRIZE(5_000, new FifthLottoPrizeJudgment()),
+    NONE_PRIZE(0, new NoneLottoPrizeJudgment());
 
     LottoPrize(int prizeMoney, LottoPrizeJudgment prizeJudgment) {
         this.prizeMoney = prizeMoney;
