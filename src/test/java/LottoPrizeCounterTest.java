@@ -1,3 +1,4 @@
+import domain.LottoPrizeCounter;
 import domain.lotto.*;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

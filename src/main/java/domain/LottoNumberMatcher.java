@@ -1,3 +1,5 @@
+package domain;
+
 import domain.lotto.LottoPrize;
 import domain.lotto.LottoTicket;
 import domain.lotto.LottoWinningNumber;

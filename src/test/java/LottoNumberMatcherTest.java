@@ -1,3 +1,4 @@
+import domain.LottoNumberMatcher;
 import domain.lotto.LottoNumber;
 import domain.lotto.LottoPrize;
 import domain.lotto.LottoTicket;
