@@ -25,20 +25,20 @@ public class LottoOutputView {
     }
 
     private void printPrizeCount(Map<LottoPrize, Integer> prizeCounts) {
-        System.out.println("3개 일치 (" + LottoPrize.FIFTH_PRIZE.getPrizeMoney() + "원)-"
-                + prizeCounts.get(LottoPrize.FIFTH_PRIZE) + "개");
-        System.out.println("4개 일치 (" + LottoPrize.FOURTH_PRIZE.getPrizeMoney() + "원)-"
-                + prizeCounts.get(LottoPrize.FOURTH_PRIZE) + "개");
-        System.out.println("5개 일치 (" + LottoPrize.THIRD_PRIZE.getPrizeMoney() + "원)-"
-                + prizeCounts.get(LottoPrize.THIRD_PRIZE) + "개");
-        System.out.println("5개 일치, 보너스 볼 일치 (" + LottoPrize.SECOND_PRIZE.getPrizeMoney() + "원)-"
-                + prizeCounts.get(LottoPrize.SECOND_PRIZE) + "개");
-        System.out.println("6개 일치 (" + LottoPrize.FIRST_PRIZE.getPrizeMoney() + "원)-"
-                + prizeCounts.get(LottoPrize.FIRST_PRIZE) + "개");
+        System.out.println("3개 일치 (" + LottoPrize.FIFTH_PRIZE.getPrizeMoney() + "원)-" +
+                prizeCounts.get(LottoPrize.FIFTH_PRIZE) + "개");
+        System.out.println("4개 일치 (" + LottoPrize.FOURTH_PRIZE.getPrizeMoney() + "원)-" +
+                prizeCounts.get(LottoPrize.FOURTH_PRIZE) + "개");
+        System.out.println("5개 일치 (" + LottoPrize.THIRD_PRIZE.getPrizeMoney() + "원)-" +
+                prizeCounts.get(LottoPrize.THIRD_PRIZE) + "개");
+        System.out.println("5개 일치, 보너스 볼 일치 (" + LottoPrize.SECOND_PRIZE.getPrizeMoney() + "원)-" +
+                prizeCounts.get(LottoPrize.SECOND_PRIZE) + "개");
+        System.out.println("6개 일치 (" + LottoPrize.FIRST_PRIZE.getPrizeMoney() + "원)-" +
+                prizeCounts.get(LottoPrize.FIRST_PRIZE) + "개");
     }
 
-    private void printEarningRate(double earningRate) {
-        System.out.printf("총 수익률은 %.2f입니다.\n", earningRate);
+    private void printLottoTicketPurchaseCount(List<LottoTicket> lottoTickets) {
+        System.out.println(lottoTickets.size() + "개를 구매했습니다.");
     }
 
     private void printLottoNumbers(List<LottoNumber> lottoNumbers) {
@@ -49,7 +49,7 @@ public class LottoOutputView {
         System.out.println("[" + numbers + "]");
     }
 
-    private void printLottoTicketPurchaseCount(List<LottoTicket> lottoTickets) {
-        System.out.println(lottoTickets.size() + "개를 구매했습니다.");
+    private void printEarningRate(double earningRate) {
+        System.out.printf("총 수익률은 %.2f입니다.\n", earningRate);
     }
 }
