@@ -2,6 +2,7 @@ package domain.lotto;
 
 import util.ListUtils;
 
+import java.util.Collections;
 import java.util.List;
 
 public class LottoWinningNumber {
@@ -12,6 +13,7 @@ public class LottoWinningNumber {
     public LottoWinningNumber(List<LottoNumber> lottoNumbers, LottoNumber bonusNumber) {
         validateSize(lottoNumbers);
         validateDuplicates(lottoNumbers, bonusNumber);
+        Collections.sort(lottoNumbers);
         this.lottoNumbers = lottoNumbers;
         this.bonusNumber = bonusNumber;
     }

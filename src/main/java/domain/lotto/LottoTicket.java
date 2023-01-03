@@ -3,6 +3,7 @@ package domain.lotto;
 import util.ListUtils;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class LottoTicket {
@@ -14,6 +15,7 @@ public class LottoTicket {
     public LottoTicket(List<LottoNumber> lottoNumbers) {
         validateSize(lottoNumbers);
         validateDuplicates(lottoNumbers);
+        Collections.sort(lottoNumbers);
         this.lottoNumbers = new ArrayList<>(lottoNumbers);
     }
 
