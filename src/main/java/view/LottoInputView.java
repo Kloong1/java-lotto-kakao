@@ -15,7 +15,7 @@ public class LottoInputView {
 
     public Cost readCost() {
         System.out.println("구매금액을 입력해 주세요.");
-        int inputCost = sc.nextInt();
+        int inputCost = Integer.parseInt(sc.nextLine());
 
         return new Cost(inputCost);
     }
@@ -41,7 +41,7 @@ public class LottoInputView {
 
     private LottoNumber readBonusNumber() {
         System.out.println("보너스 볼을 입력해 주세요.");
-        int bonusBallNumber = sc.nextInt();
+        int bonusBallNumber = Integer.parseInt(sc.nextLine());
 
         return new LottoNumber(bonusBallNumber);
     }
