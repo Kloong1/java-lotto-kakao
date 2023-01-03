@@ -1,3 +1,8 @@
+package domain.lotto;
+
+import domain.judgment.LottoPrizeJudgment;
+import domain.judgment.impl.*;
+
 import java.util.Arrays;
 
 public enum LottoPrize {

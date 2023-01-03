@@ -1,3 +1,5 @@
+package domain.lotto;
+
 public class Cost {
 
     public static final int MINIMUM_VALUE = 0;

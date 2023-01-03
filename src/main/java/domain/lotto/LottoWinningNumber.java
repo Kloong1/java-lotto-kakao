@@ -1,3 +1,7 @@
+package domain.lotto;
+
+import util.ListUtils;
+
 import java.util.List;
 
 public class LottoWinningNumber {

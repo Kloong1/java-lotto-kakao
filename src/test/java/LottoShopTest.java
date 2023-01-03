@@ -1,3 +1,7 @@
+import domain.lotto.Cost;
+import domain.lotto.LottoShop;
+import domain.lotto.LottoTicket;
+import domain.lotto.LottoTicketRandomGenerator;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;

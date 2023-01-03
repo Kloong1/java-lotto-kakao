@@ -1,3 +1,5 @@
+import domain.lotto.LottoNumber;
+import domain.lotto.LottoWinningNumber;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

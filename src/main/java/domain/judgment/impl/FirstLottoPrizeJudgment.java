@@ -1,3 +1,10 @@
+package domain.judgment.impl;
+
+import domain.judgment.LottoPrizeJudgment;
+import domain.lotto.LottoNumber;
+import domain.lotto.LottoTicket;
+import domain.lotto.LottoWinningNumber;
+
 import java.util.List;
 
 public class FirstLottoPrizeJudgment implements LottoPrizeJudgment {
