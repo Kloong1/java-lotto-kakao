@@ -1,8 +1,9 @@
-import domain.lotto.LottoPrize;
-import domain.lotto.LottoPrizeResult;
+import domain.lotto.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.HashMap;
 
@@ -34,5 +35,22 @@ public class LottoPrizeResultTest {
     void create_throw() {
         prizeCounts.remove(LottoPrize.FIRST_PRIZE);
         assertThatIllegalArgumentException().isThrownBy(() -> new LottoPrizeResult(prizeCounts));
+    }
+
+    @DisplayName("로또 구매 횟수로 수익률을 계산한다")
+    @ParameterizedTest
+    @ValueSource(ints = {14, 1000, 1})
+    void calculateEarningRate(int lottoPurchaseCount) {
+        prizeCounts.put(LottoPrize.FIRST_PRIZE, 1);
+        LottoPrizeResult lottoPrizeResult = new LottoPrizeResult(prizeCounts);
+
+        LottoEarningRate expected = new LottoEarningRate(
+                (double) LottoPrize.FIRST_PRIZE.getPrizeMoney() / (lottoPurchaseCount * LottoShop.LOTTO_PRICE));
+
+        LottoEarningRate result = lottoPrizeResult.calculateEarningRate(lottoPurchaseCount);
+
+        int floor = 1_000_000;
+        assertThat(Math.floor(result.getEarningRate() * floor))
+                .isEqualTo(Math.floor(result.getEarningRate() * floor));
     }
 }

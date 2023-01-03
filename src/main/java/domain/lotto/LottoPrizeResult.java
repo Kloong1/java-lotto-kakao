@@ -26,6 +26,17 @@ public class LottoPrizeResult {
         return earningRate;
     }
 
+    public LottoEarningRate calculateEarningRate(int lottoPurchaseCount) {
+        double cost = (double) lottoPurchaseCount * LottoShop.LOTTO_PRICE;
+        return new LottoEarningRate(getPrizeMoneySum() / cost);
+    }
+
+    private int getPrizeMoneySum() {
+        return prizeCounts.entrySet().stream()
+                .mapToInt(prizeCount -> prizeCount.getKey().getPrizeMoney() * prizeCount.getValue())
+                .sum();
+    }
+
     private void validatePrizeCounts(Map<LottoPrize, Integer> prizeCounts) {
         boolean hasMissingPrize = Arrays.stream(LottoPrize.values())
                 .anyMatch(lottoPrize -> !prizeCounts.containsKey(lottoPrize));
