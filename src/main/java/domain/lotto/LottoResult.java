@@ -11,4 +11,12 @@ public class LottoResult {
         this.prizeCounts = prizeCounts;
         this.earningRate = earningRate;
     }
+
+    public Map<LottoPrize, Integer> getPrizeCounts() {
+        return prizeCounts;
+    }
+
+    public double getEarningRate() {
+        return earningRate;
+    }
 }
