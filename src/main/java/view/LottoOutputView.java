@@ -18,10 +18,10 @@ public class LottoOutputView {
                 .forEach(this::printLottoNumbers);
     }
 
-    public void printLottoResult(Map<LottoPrize, Integer> prizeCounts, LottoEarningRate lottoEarningRate) {
+    public void printLottoResult(LottoPrizeResult lottoPrizeResult, LottoEarningRate lottoEarningRate) {
         System.out.println(System.lineSeparator() + "당첨 통계");
         System.out.println("----------");
-        printPrizeCount(prizeCounts);
+        printPrizeCount(lottoPrizeResult);
         printEarningRate(lottoEarningRate);
     }
 
@@ -34,17 +34,17 @@ public class LottoOutputView {
         System.out.println("[" + numbers + "]");
     }
 
-    private void printPrizeCount(Map<LottoPrize, Integer> prizeCounts) {
+    private void printPrizeCount(LottoPrizeResult lottoPrizeResult) {
         System.out.printf("3개 일치 (%d원)- %d개%n",
-                LottoPrize.FIFTH_PRIZE.getPrizeMoney(), prizeCounts.get(LottoPrize.FIFTH_PRIZE));
+                LottoPrize.FIFTH_PRIZE.getPrizeMoney(), lottoPrizeResult.getCountOf(LottoPrize.FIFTH_PRIZE));
         System.out.printf("4개 일치 (%d원)- %d개%n",
-                LottoPrize.FOURTH_PRIZE.getPrizeMoney(), prizeCounts.get(LottoPrize.FOURTH_PRIZE));
+                LottoPrize.FOURTH_PRIZE.getPrizeMoney(), lottoPrizeResult.getCountOf(LottoPrize.FOURTH_PRIZE));
         System.out.printf("5개 일치 (%d원)- %d개%n",
-                LottoPrize.THIRD_PRIZE.getPrizeMoney(), prizeCounts.get(LottoPrize.THIRD_PRIZE));
+                LottoPrize.THIRD_PRIZE.getPrizeMoney(), lottoPrizeResult.getCountOf(LottoPrize.THIRD_PRIZE));
         System.out.printf("5개 일치, 보너스 볼 일치 (%d원)- %d개%n",
-                LottoPrize.SECOND_PRIZE.getPrizeMoney(), prizeCounts.get(LottoPrize.SECOND_PRIZE));
+                LottoPrize.SECOND_PRIZE.getPrizeMoney(), lottoPrizeResult.getCountOf(LottoPrize.SECOND_PRIZE));
         System.out.printf("6개 일치 (%d원)- %d개%n",
-                LottoPrize.FIRST_PRIZE.getPrizeMoney(), prizeCounts.get(LottoPrize.FIRST_PRIZE));
+                LottoPrize.FIRST_PRIZE.getPrizeMoney(), lottoPrizeResult.getCountOf(LottoPrize.FIRST_PRIZE));
     }
 
     private void printEarningRate(LottoEarningRate lottoEarningRate) {

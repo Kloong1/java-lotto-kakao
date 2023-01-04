@@ -22,6 +22,6 @@ public class LottoController {
 
         LottoPrizeResult lottoPrizeResult = lottoTickets.matchTickets(lottoWinningNumber);
         LottoEarningRate lottoEarningRate = new LottoEarningRate(lottoPrizeResult, lottoTickets);
-        lottoOutputView.printLottoResult(lottoPrizeResult.getPrizeCounts(), lottoEarningRate);
+        lottoOutputView.printLottoResult(lottoPrizeResult, lottoEarningRate);
     }
 }
