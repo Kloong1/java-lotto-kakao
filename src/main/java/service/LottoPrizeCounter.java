@@ -11,10 +11,10 @@ import java.util.List;
 import java.util.Map;
 
 public class LottoPrizeCounter {
-    private final LottoNumberMatcher lottoNumberMatcher;
+    private final LottoWinningNumber lottoWinningNumber;
 
     public LottoPrizeCounter(LottoWinningNumber lottoWinningNumber) {
-        this.lottoNumberMatcher = new LottoNumberMatcher(lottoWinningNumber);
+        this.lottoWinningNumber = lottoWinningNumber;
     }
 
     public LottoPrizeResult countPrize(List<LottoTicket> lottoTickets) {
@@ -23,8 +23,8 @@ public class LottoPrizeCounter {
                 .forEach(prize -> prizeCounts.put(prize, 0));
 
         lottoTickets.stream()
-                .map(lottoNumberMatcher::match)
-                .forEach(lottoPrize -> prizeCounts.computeIfPresent(lottoPrize, (key, value) -> value + 1));
+                .map(lottoTicket -> LottoPrize.matchLottoTicket(lottoTicket, lottoWinningNumber))
+                .forEach(lottoPrize -> prizeCounts.computeIfPresent(lottoPrize, (prize, count) -> count + 1));
 
         return new LottoPrizeResult(prizeCounts);
     }
