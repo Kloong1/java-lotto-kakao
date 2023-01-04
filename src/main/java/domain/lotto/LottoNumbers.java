@@ -21,6 +21,12 @@ public class LottoNumbers {
         return lottoNumbers.contains(lottoNumber);
     }
 
+    public int countCommonLottoNumbers(LottoNumbers other) {
+        HashSet<LottoNumber> intersection = new HashSet<>(lottoNumbers);
+        intersection.retainAll(other.getLottoNumbers());
+        return intersection.size();
+    }
+
     private void validateSize(Set<LottoNumber> lottoNumbers) {
         if (lottoNumbers.size() != LOTTO_NUMBERS_SIZE) {
             throw new IllegalArgumentException("로또 번호는 6개여야 합니다.");
