@@ -22,16 +22,16 @@ public class LottoOutputView {
     }
 
     private void printPrizeCount(Map<LottoPrize, Integer> prizeCounts) {
-        System.out.println("3개 일치 (" + LottoPrize.FIFTH_PRIZE.getPrizeMoney() + "원)-" +
-                prizeCounts.get(LottoPrize.FIFTH_PRIZE) + "개");
-        System.out.println("4개 일치 (" + LottoPrize.FOURTH_PRIZE.getPrizeMoney() + "원)-" +
-                prizeCounts.get(LottoPrize.FOURTH_PRIZE) + "개");
-        System.out.println("5개 일치 (" + LottoPrize.THIRD_PRIZE.getPrizeMoney() + "원)-" +
-                prizeCounts.get(LottoPrize.THIRD_PRIZE) + "개");
-        System.out.println("5개 일치, 보너스 볼 일치 (" + LottoPrize.SECOND_PRIZE.getPrizeMoney() + "원)-" +
-                prizeCounts.get(LottoPrize.SECOND_PRIZE) + "개");
-        System.out.println("6개 일치 (" + LottoPrize.FIRST_PRIZE.getPrizeMoney() + "원)-" +
-                prizeCounts.get(LottoPrize.FIRST_PRIZE) + "개");
+        System.out.printf("3개 일치 (%d원)- %d개%n",
+                LottoPrize.FIFTH_PRIZE.getPrizeMoney(), prizeCounts.get(LottoPrize.FIFTH_PRIZE));
+        System.out.printf("4개 일치 (%d원)- %d개%n",
+                LottoPrize.FOURTH_PRIZE.getPrizeMoney(), prizeCounts.get(LottoPrize.FOURTH_PRIZE));
+        System.out.printf("5개 일치 (%d원)- %d개%n",
+                LottoPrize.THIRD_PRIZE.getPrizeMoney(), prizeCounts.get(LottoPrize.THIRD_PRIZE));
+        System.out.printf("5개 일치, 보너스 볼 일치 (%d원)- %d개%n",
+                LottoPrize.SECOND_PRIZE.getPrizeMoney(), prizeCounts.get(LottoPrize.SECOND_PRIZE));
+        System.out.printf("6개 일치 (%d원)- %d개%n",
+                LottoPrize.FIRST_PRIZE.getPrizeMoney(), prizeCounts.get(LottoPrize.FIRST_PRIZE));
     }
 
     private void printLottoTicketPurchaseCount(List<LottoTicket> lottoTickets) {
