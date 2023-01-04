@@ -21,7 +21,13 @@ public class LottoPrizeResult {
     public LottoEarningRate calculateEarningRate(int lottoPurchaseCount) {
         validateLottoPurchaseCount(lottoPurchaseCount);
         double cost = (double) lottoPurchaseCount * LottoShop.LOTTO_PRICE;
-        return new LottoEarningRate(getPrizeMoneySum() / cost);
+        return new LottoEarningRate(calculatePrizeMoneySum() / cost);
+    }
+
+    public int calculatePrizeMoneySum() {
+        return prizeCounts.entrySet().stream()
+                .mapToInt(prizeCount -> prizeCount.getKey().getPrizeMoney() * prizeCount.getValue())
+                .sum();
     }
 
     private void validatePrizeCounts(Map<LottoPrize, Integer> prizeCounts) {
@@ -34,12 +40,6 @@ public class LottoPrizeResult {
         if (lottoPurchaseCount <= 0) {
             throw new IllegalArgumentException("로또 구매 횟수는 1 이상이어야 합니다.");
         }
-    }
-
-    private int getPrizeMoneySum() {
-        return prizeCounts.entrySet().stream()
-                .mapToInt(prizeCount -> prizeCount.getKey().getPrizeMoney() * prizeCount.getValue())
-                .sum();
     }
 
     @Override
