@@ -12,6 +12,10 @@ public class LottoTickets {
         this.tickets = new ArrayList<>(tickets);
     }
 
+    public List<LottoNumbers> getTickets() {
+        return new ArrayList<>(tickets);
+    }
+
     public Cost calculatePurcaseCost() {
         return new Cost(tickets.size() * LottoShop.LOTTO_PRICE);
     }
