@@ -7,6 +7,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import service.LottoShop;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,12 +20,8 @@ public class LottoPrizeResultTest {
     @BeforeEach
     void setUp() {
         prizeCounts = new HashMap<>();
-        prizeCounts.put(LottoPrize.FIRST_PRIZE, 0);
-        prizeCounts.put(LottoPrize.SECOND_PRIZE, 0);
-        prizeCounts.put(LottoPrize.THIRD_PRIZE, 0);
-        prizeCounts.put(LottoPrize.FOURTH_PRIZE, 0);
-        prizeCounts.put(LottoPrize.FIFTH_PRIZE, 0);
-        prizeCounts.put(LottoPrize.NONE_PRIZE, 0);
+        Arrays.stream(LottoPrize.values())
+                        .forEach(lottoPrize -> prizeCounts.put(lottoPrize, 0));
     }
 
     @DisplayName("Map<LottoPrize, Integer>를 주입받아 LottoResult를 생성한다")
