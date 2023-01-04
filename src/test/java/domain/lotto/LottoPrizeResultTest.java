@@ -47,4 +47,21 @@ public class LottoPrizeResultTest {
         assertThat(lottoPrizeResult.getCountOf(LottoPrize.SECOND_PRIZE)).isEqualTo(2);
         assertThat(lottoPrizeResult.getCountOf(LottoPrize.THIRD_PRIZE)).isEqualTo(3);
     }
+
+    @DisplayName("당첨 금액의 합을 구해서 반환한다")
+    @Test
+    void calculatePrizeMoneySum() {
+        prizeCounts.put(LottoPrize.FIRST_PRIZE, 1);
+        prizeCounts.put(LottoPrize.SECOND_PRIZE, 5);
+        prizeCounts.put(LottoPrize.THIRD_PRIZE, 10);
+
+        LottoPrizeResult lottoPrizeResult = new LottoPrizeResult(prizeCounts);
+
+        int sum = LottoPrize.FIRST_PRIZE.getPrizeMoney() +
+                LottoPrize.SECOND_PRIZE.getPrizeMoney() * 5 +
+                LottoPrize.THIRD_PRIZE.getPrizeMoney() * 10;
+
+        assertThat(lottoPrizeResult.calculatePrizeMoneySum())
+                .isEqualTo(sum);
+    }
 }
