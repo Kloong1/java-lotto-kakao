@@ -2,8 +2,7 @@ package domain.lotto;
 
 import service.LottoShop;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class LottoTickets {
     private final List<LottoNumbers> tickets;
@@ -15,6 +14,18 @@ public class LottoTickets {
 
     public Cost calculatePurcaseCost() {
         return new Cost(tickets.size() * LottoShop.LOTTO_PRICE);
+    }
+
+    public LottoPrizeResult matchTickets(LottoWinningNumber lottoWinningNumber) {
+        Map<LottoPrize, Integer> prizeCounts = new EnumMap<>(LottoPrize.class);
+        Arrays.stream(LottoPrize.values())
+                .forEach(prize -> prizeCounts.put(prize, 0));
+
+        tickets.stream()
+                .map(lottoNumbers -> LottoPrize.matchLottoNumbers(lottoNumbers, lottoWinningNumber))
+                .forEach(lottoPrize -> prizeCounts.computeIfPresent(lottoPrize, (prize, count) -> count + 1));
+
+        return new LottoPrizeResult(prizeCounts);
     }
 
     private void validateTickets(List<LottoNumbers> tickets) {
