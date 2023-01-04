@@ -2,6 +2,8 @@ package domain.lotto;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.assertj.core.api.Assertions.assertThatNoException;
@@ -14,9 +16,10 @@ public class LottoNumberTest {
         assertThatNoException().isThrownBy(() -> new LottoNumber(2));
     }
 
-    @Test
-    @DisplayName("범위 밖의 로또 번호를 입력하면 예외가 발생한다.")
-    void validateRange_throw() {
-        assertThatIllegalArgumentException().isThrownBy(() -> new LottoNumber(50));
+    @DisplayName("범위 밖의 로또 번호를 생성하려고 하면 예외가 발생한다.")
+    @ParameterizedTest
+    @ValueSource(ints = {0, -1, -50, 46})
+    void validateRange_throw(int number) {
+        assertThatIllegalArgumentException().isThrownBy(() -> new LottoNumber(number));
     }
 }
