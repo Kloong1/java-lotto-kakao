@@ -9,7 +9,7 @@ public class LottoTicketRandomGenerator implements LottoTicketGenerator {
 
     @Override
     public LottoTicket generate() {
-        List<LottoNumber> lottoNumberCandidates = IntStream.range(LottoNumber.MINIMUM_VALUE, LottoNumber.MAXIMUM_VALUE)
+        List<LottoNumber> lottoNumberCandidates = IntStream.range(LottoNumber.MINIMUM_NUMBER, LottoNumber.MAXIMUM_NUMBER)
                 .mapToObj(LottoNumber::new)
                 .collect(Collectors.toList());
         Collections.shuffle(lottoNumberCandidates);

@@ -4,22 +4,22 @@ import java.util.Objects;
 
 public class LottoNumber implements Comparable<LottoNumber> {
 
-    public static final int MINIMUM_VALUE = 1;
-    public static final int MAXIMUM_VALUE = 45;
+    public static final int MINIMUM_NUMBER = 1;
+    public static final int MAXIMUM_NUMBER = 45;
 
-    private final int value;
+    private final int number;
 
-    public LottoNumber(int value) {
-        validateRange(value);
-        this.value = value;
+    public LottoNumber(int number) {
+        validateRange(number);
+        this.number = number;
     }
 
-    public int getValue() {
-        return value;
+    public int getNumber() {
+        return number;
     }
 
-    private void validateRange(int value) {
-        if (value < MINIMUM_VALUE || value > MAXIMUM_VALUE) {
+    private void validateRange(int number) {
+        if (number < MINIMUM_NUMBER || number > MAXIMUM_NUMBER) {
             throw new IllegalArgumentException("잘못된 범위의 숫자입니다.");
         }
     }
@@ -29,16 +29,16 @@ public class LottoNumber implements Comparable<LottoNumber> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         LottoNumber that = (LottoNumber) o;
-        return value == that.value;
+        return number == that.number;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(value);
+        return Objects.hash(number);
     }
 
     @Override
     public int compareTo(LottoNumber o) {
-        return Integer.compare(value, o.value);
+        return Integer.compare(number, o.number);
     }
 }

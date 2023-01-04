@@ -40,7 +40,7 @@ public class LottoOutputView {
 
     private void printLottoNumbers(List<LottoNumber> lottoNumbers) {
         String numbers = lottoNumbers.stream()
-                .map(LottoNumber::getValue)
+                .map(LottoNumber::getNumber)
                 .map(String::valueOf)
                 .collect(Collectors.joining(", "));
         System.out.println("[" + numbers + "]");
