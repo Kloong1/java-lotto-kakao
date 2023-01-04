@@ -4,8 +4,8 @@ import domain.lotto.Cost;
 import domain.lotto.LottoTicket;
 import domain.lotto.LottoTicketGenerator;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class LottoShop {
@@ -20,11 +20,9 @@ public class LottoShop {
 
     public List<LottoTicket> buyLottoTickets(Cost cost) {
         validateCost(cost);
-        List<LottoTicket> lottoTickets = new ArrayList<>();
-        for (int i = 0; i < cost.countAvailablePurchases(LOTTO_PRICE); i++) {
-            lottoTickets.add(lottoTicketGenerator.generate());
-        }
-        return lottoTickets;
+        return IntStream.range(0, cost.countAvailablePurchases(LOTTO_PRICE))
+                .mapToObj(idx -> lottoTicketGenerator.generate())
+                .collect(Collectors.toList());
     }
 
     private void validateCost(Cost cost) {
