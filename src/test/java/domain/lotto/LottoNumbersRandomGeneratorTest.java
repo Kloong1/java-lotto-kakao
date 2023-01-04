@@ -1,10 +1,11 @@
 package domain.lotto;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.Set;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -44,5 +45,27 @@ public class LottoNumbersRandomGeneratorTest {
         int lowerBound = LottoNumber.MINIMUM_NUMBER;
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> new LottoNumbersRandomGenerator(lowerBound, upperBound));
+    }
+
+    @DisplayName("지정한 숫자 범위 이내의 " + LottoNumbers.LOTTO_NUMBERS_SIZE + " 크기의 LottoNumbers 를 생성한다")
+    @Test
+    void generate() {
+        int lowerBound = 1;
+        int upperBound = 6;
+        LottoNumbersRandomGenerator lottoNumbersRandomGenerator =
+                new LottoNumbersRandomGenerator(lowerBound, upperBound);
+
+        LottoNumbers expected = new LottoNumbers(Set.of(
+                new LottoNumber(1),
+                new LottoNumber(2),
+                new LottoNumber(3),
+                new LottoNumber(4),
+                new LottoNumber(5),
+                new LottoNumber(6)
+        ));
+
+        LottoNumbers lottoNumbers = lottoNumbersRandomGenerator.generate();
+
+        assertThat(lottoNumbers).isEqualTo(expected);
     }
 }
