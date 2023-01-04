@@ -8,12 +8,13 @@ import org.junit.jupiter.params.provider.ValueSource;
 import service.LottoShop;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.*;
 
 public class LottoPrizeResultTest {
 
-    HashMap<LottoPrize, Integer> prizeCounts;
+    Map<LottoPrize, Integer> prizeCounts;
 
     @BeforeEach
     void setUp() {
