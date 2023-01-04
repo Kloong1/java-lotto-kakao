@@ -10,10 +10,4 @@ public class ListUtils {
                 .count();
         return distinctCount < list.size();
     }
-
-    public static <T> long countCommonElements(List<T> list1, List<T> list2) {
-        return list2.stream()
-                .filter(list1::contains)
-                .count();
-    }
 }
