@@ -1,9 +1,11 @@
 package domain.lotto;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+import service.LottoShop;
 
 import java.util.Collections;
 import java.util.List;
@@ -36,5 +38,20 @@ public class LottoTicketsTest {
     void create_throw() {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> new LottoTickets(Collections.emptyList()));
+    }
+
+    @DisplayName("로또 구매 금액을 계산한다.")
+    @ParameterizedTest
+    @ValueSource(ints = {1, 10, 50, 100})
+    void calculatePurchaseCost(int ticketCount) {
+        List<LottoNumbers> tickets = IntStream.range(0, ticketCount)
+                .mapToObj(i -> lottoNumbersGenerator.generate())
+                .collect(Collectors.toList());
+
+        LottoTickets lottoTickets = new LottoTickets(tickets);
+
+        Cost cost = lottoTickets.calculatePurcaseCost();
+
+        assertThat(cost).isEqualTo(new Cost(LottoShop.LOTTO_PRICE * ticketCount));
     }
 }

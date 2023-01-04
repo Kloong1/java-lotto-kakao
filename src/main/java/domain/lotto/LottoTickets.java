@@ -1,5 +1,7 @@
 package domain.lotto;
 
+import service.LottoShop;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +11,10 @@ public class LottoTickets {
     public LottoTickets(List<LottoNumbers> tickets) {
         validateTickets(tickets);
         this.tickets = new ArrayList<>(tickets);
+    }
+
+    public Cost calculatePurcaseCost() {
+        return new Cost(tickets.size() * LottoShop.LOTTO_PRICE);
     }
 
     private void validateTickets(List<LottoNumbers> tickets) {
