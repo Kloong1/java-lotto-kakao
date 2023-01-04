@@ -2,11 +2,13 @@ package view;
 
 import domain.lotto.Cost;
 import domain.lotto.LottoNumber;
+import domain.lotto.LottoNumbers;
 import domain.lotto.LottoWinningNumber;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class LottoInputView {
@@ -21,22 +23,21 @@ public class LottoInputView {
     }
 
     public LottoWinningNumber readWinningNumber() {
-        List<LottoNumber> lottoNumbers = readLottoNumbers();
+        LottoNumbers lottoNumbers = readLottoNumbers();
         LottoNumber bonusNumber = readBonusNumber();
-
         return new LottoWinningNumber(lottoNumbers, bonusNumber);
     }
 
-    private List<LottoNumber> readLottoNumbers() {
+    private LottoNumbers readLottoNumbers() {
         System.out.println(System.lineSeparator() + "지난 주 당첨 번호를 입력해 주세요.");
         String input = sc.nextLine();
         String[] inputStrings = input.split(",");
-
-        return Arrays.stream(inputStrings)
+        Set<LottoNumber> lottoNumbers = Arrays.stream(inputStrings)
                 .map(String::trim)
                 .mapToInt(Integer::parseInt)
                 .mapToObj(LottoNumber::new)
-                .collect(Collectors.toList());
+                .collect(Collectors.toSet());
+        return new LottoNumbers(lottoNumbers);
     }
 
     private LottoNumber readBonusNumber() {

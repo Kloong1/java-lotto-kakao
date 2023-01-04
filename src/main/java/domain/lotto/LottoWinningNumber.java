@@ -7,18 +7,16 @@ import java.util.List;
 
 public class LottoWinningNumber {
 
-    private final List<LottoNumber> lottoNumbers;
+    private final LottoNumbers lottoNumbers;
     private final LottoNumber bonusNumber;
 
-    public LottoWinningNumber(List<LottoNumber> lottoNumbers, LottoNumber bonusNumber) {
-        validateSize(lottoNumbers);
+    public LottoWinningNumber(LottoNumbers lottoNumbers, LottoNumber bonusNumber) {
         validateDuplicates(lottoNumbers, bonusNumber);
-        Collections.sort(lottoNumbers);
         this.lottoNumbers = lottoNumbers;
         this.bonusNumber = bonusNumber;
     }
 
-    public List<LottoNumber> getLottoNumbers() {
+    public LottoNumbers getLottoNumbers() {
         return lottoNumbers;
     }
 
@@ -26,14 +24,8 @@ public class LottoWinningNumber {
         return bonusNumber;
     }
 
-    private void validateSize(List<LottoNumber> lottoNumbers) {
-        if (lottoNumbers.size() != LottoNumbers.LOTTO_NUMBERS_SIZE) {
-            throw new IllegalArgumentException("로또 번호는 6개여야 합니다.");
-        }
-    }
-
-    public void validateDuplicates(List<LottoNumber> lottoNumbers, LottoNumber bonusNumber) {
-        if (ListUtils.hasDuplicates(lottoNumbers) || lottoNumbers.contains(bonusNumber)) {
+    public void validateDuplicates(LottoNumbers lottoNumbers, LottoNumber bonusNumber) {
+        if (lottoNumbers.contains(bonusNumber)) {
             throw new IllegalArgumentException("중복된 로또 번호가 있습니다.");
         }
     }

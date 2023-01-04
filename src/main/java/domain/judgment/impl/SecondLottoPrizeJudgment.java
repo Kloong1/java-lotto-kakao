@@ -4,21 +4,13 @@ import domain.judgment.LottoPrizeJudgment;
 import domain.lotto.LottoNumber;
 import domain.lotto.LottoNumbers;
 import domain.lotto.LottoWinningNumber;
-import util.SetUtils;
-
-import java.util.HashSet;
-import java.util.Set;
 
 public class SecondLottoPrizeJudgment implements LottoPrizeJudgment {
 
     @Override
     public boolean judge(LottoNumbers lottoNumbers, LottoWinningNumber lottoWinningNumber) {
-        Set<LottoNumber> numbers = lottoNumbers.getLottoNumbers();
-        Set<LottoNumber> winningNumbers = new HashSet<>(lottoWinningNumber.getLottoNumbers());
+        LottoNumbers winningNumbers = lottoWinningNumber.getLottoNumbers();
         LottoNumber bonusNumber = lottoWinningNumber.getBonusNumber();
-
-        Set<LottoNumber> intersection = SetUtils.getIntersectionFrom(numbers, winningNumbers);
-
-        return intersection.size() == 5 && numbers.contains(bonusNumber);
+        return lottoNumbers.countCommonLottoNumbers(winningNumbers) == 5 && lottoNumbers.contains(bonusNumber);
     }
 }
