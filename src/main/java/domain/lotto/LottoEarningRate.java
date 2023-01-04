@@ -11,8 +11,9 @@ public class LottoEarningRate {
         this.earningRate = earningRate;
     }
 
-    public LottoEarningRate(LottoPrizeResult lottoPrizeResult, Cost cost) {
+    public LottoEarningRate(LottoPrizeResult lottoPrizeResult, LottoTickets lottoTickets) {
         int prizeMoneySum = lottoPrizeResult.calculatePrizeMoneySum();
+        Cost cost = lottoTickets.calculatePurcaseCost();
         double tempEarningRate = (double) prizeMoneySum / cost.getCost();
         validateEarningRate(tempEarningRate);
         this.earningRate = tempEarningRate;

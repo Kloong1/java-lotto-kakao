@@ -21,7 +21,7 @@ public class LottoController {
         LottoWinningNumber lottoWinningNumber = lottoInputView.readWinningNumber();
 
         LottoPrizeResult lottoPrizeResult = lottoTickets.matchTickets(lottoWinningNumber);
-        LottoEarningRate lottoEarningRate = new LottoEarningRate(lottoPrizeResult, lottoTickets.calculatePurcaseCost());
+        LottoEarningRate lottoEarningRate = new LottoEarningRate(lottoPrizeResult, lottoTickets);
         lottoOutputView.printLottoResult(lottoPrizeResult.getPrizeCounts(), lottoEarningRate);
     }
 }

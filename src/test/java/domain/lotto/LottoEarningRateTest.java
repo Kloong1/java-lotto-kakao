@@ -4,10 +4,14 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import service.LottoShop;
 
 import java.util.Arrays;
 import java.util.EnumMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -27,20 +31,27 @@ public class LottoEarningRateTest {
         assertThatIllegalArgumentException().isThrownBy(() -> new LottoEarningRate(earningRate));
     }
 
-    @DisplayName("LottoPrizeResult와 Cost를 넘겨 받아 수익률을 계산한다")
-    @Test
-    void create_fromPrizeAndCost() {
+    @DisplayName("LottoPrizeResult와 LottoTickets를 넘겨 받아 수익률을 계산한다")
+    @ParameterizedTest
+    @ValueSource(ints = {10, 100, 1_000, 50_000})
+    void create_fromPrizeAndCost(int ticketCount) {
         Map<LottoPrize, Integer> prizeCounts = new EnumMap<>(LottoPrize.class);
         Arrays.stream(LottoPrize.values())
                 .forEach(lottoPrize -> prizeCounts.put(lottoPrize, 0));
         prizeCounts.put(LottoPrize.FIRST_PRIZE, 1);
 
-        LottoPrizeResult lottoPrizeResult = new LottoPrizeResult(prizeCounts);
-        Cost cost = new Cost(10_000);
+        LottoNumbersGenerator lottoNumbersGenerator =
+                new LottoNumbersRandomGenerator(LottoNumber.MINIMUM_NUMBER, LottoNumber.MAXIMUM_NUMBER);
+        List<LottoNumbers> lottoNumbers = IntStream.range(0, ticketCount)
+                .mapToObj(i -> lottoNumbersGenerator.generate())
+                .collect(Collectors.toList());
+        LottoTickets lottoTickets = new LottoTickets(lottoNumbers);
 
-        LottoEarningRate lottoEarningRate = new LottoEarningRate(lottoPrizeResult, cost);
+        LottoPrizeResult lottoPrizeResult = new LottoPrizeResult(prizeCounts);
+
+        LottoEarningRate lottoEarningRate = new LottoEarningRate(lottoPrizeResult, lottoTickets);
 
         assertThat(lottoEarningRate.getEarningRate())
-                .isEqualTo((double) LottoPrize.FIRST_PRIZE.getPrizeMoney() / cost.getCost());
+                .isEqualTo((double) LottoPrize.FIRST_PRIZE.getPrizeMoney() / (ticketCount * LottoShop.LOTTO_PRICE));
     }
 }
