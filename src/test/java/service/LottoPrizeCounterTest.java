@@ -1,12 +1,11 @@
 package service;
 
-import service.LottoPrizeCounter;
 import domain.lotto.*;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import service.LottoPrizeResult;
+import domain.lotto.LottoPrizeResult;
 
 import java.util.Arrays;
 import java.util.HashMap;

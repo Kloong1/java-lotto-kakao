@@ -2,7 +2,7 @@ package controller;
 
 import service.LottoPrizeCounter;
 import domain.lotto.*;
-import service.LottoPrizeResult;
+import domain.lotto.LottoPrizeResult;
 import service.LottoShop;
 import view.LottoInputView;
 import view.LottoOutputView;
