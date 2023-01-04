@@ -4,6 +4,7 @@ import domain.lotto.*;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class LottoOutputView {
@@ -38,9 +39,10 @@ public class LottoOutputView {
         System.out.println(lottoTickets.size() + "개를 구매했습니다.");
     }
 
-    private void printLottoNumbers(List<LottoNumber> lottoNumbers) {
+    private void printLottoNumbers(Set<LottoNumber> lottoNumbers) {
         String numbers = lottoNumbers.stream()
                 .map(LottoNumber::getNumber)
+                .sorted()
                 .map(String::valueOf)
                 .collect(Collectors.joining(", "));
         System.out.println("[" + numbers + "]");

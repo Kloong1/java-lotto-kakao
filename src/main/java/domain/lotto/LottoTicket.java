@@ -13,8 +13,8 @@ public class LottoTicket {
         this.lottoNumbers = new HashSet<>(lottoNumbers);
     }
 
-    public List<LottoNumber> getLottoNumbers() {
-        return new ArrayList<>(lottoNumbers);
+    public Set<LottoNumber> getLottoNumbers() {
+        return new HashSet<>(lottoNumbers);
     }
 
     private void validateSize(Set<LottoNumber> lottoNumbers) {
