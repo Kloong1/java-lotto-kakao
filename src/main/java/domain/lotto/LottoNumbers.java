@@ -6,24 +6,24 @@ public class LottoNumbers {
 
     public static final int LOTTO_NUMBERS_SIZE = 6;
 
-    private final Set<LottoNumber> lottoNumbers;
+    private final Set<LottoNumber> numbers;
 
-    public LottoNumbers(Set<LottoNumber> lottoNumbers) {
-        validateSize(lottoNumbers);
-        this.lottoNumbers = new HashSet<>(lottoNumbers);
+    public LottoNumbers(Set<LottoNumber> numbers) {
+        validateSize(numbers);
+        this.numbers = new HashSet<>(numbers);
     }
 
-    public Set<LottoNumber> getLottoNumbers() {
-        return new HashSet<>(lottoNumbers);
+    public Set<LottoNumber> getNumbers() {
+        return new HashSet<>(numbers);
     }
 
     public boolean contains(LottoNumber lottoNumber) {
-        return lottoNumbers.contains(lottoNumber);
+        return numbers.contains(lottoNumber);
     }
 
     public int countCommonLottoNumbers(LottoNumbers other) {
-        HashSet<LottoNumber> intersection = new HashSet<>(lottoNumbers);
-        intersection.retainAll(other.getLottoNumbers());
+        HashSet<LottoNumber> intersection = new HashSet<>(numbers);
+        intersection.retainAll(other.getNumbers());
         return intersection.size();
     }
 

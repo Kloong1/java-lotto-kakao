@@ -11,7 +11,7 @@ public class LottoOutputView {
     public void printLottoTickets(List<LottoNumbers> lottoTickets) {
         printLottoTicketPurchaseCount(lottoTickets);
         lottoTickets.stream()
-                .map(LottoNumbers::getLottoNumbers)
+                .map(LottoNumbers::getNumbers)
                 .forEach(this::printLottoNumbers);
     }
 
