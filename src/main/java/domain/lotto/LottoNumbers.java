@@ -2,13 +2,13 @@ package domain.lotto;
 
 import java.util.*;
 
-public class LottoTicket {
+public class LottoNumbers {
 
     public static final int LOTTO_NUMBERS_SIZE = 6;
 
     private final Set<LottoNumber> lottoNumbers;
 
-    public LottoTicket(Set<LottoNumber> lottoNumbers) {
+    public LottoNumbers(Set<LottoNumber> lottoNumbers) {
         validateSize(lottoNumbers);
         this.lottoNumbers = new HashSet<>(lottoNumbers);
     }

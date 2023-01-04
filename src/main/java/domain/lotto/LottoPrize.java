@@ -26,9 +26,9 @@ public enum LottoPrize {
         return prizeMoney;
     }
 
-    public static LottoPrize matchLottoTicket(LottoTicket lottoTicket, LottoWinningNumber lottoWinningNumber) {
+    public static LottoPrize matchLottoNumbers(LottoNumbers lottoNumbers, LottoWinningNumber lottoWinningNumber) {
         return Arrays.stream(values())
-                .filter(lottoPrize -> lottoPrize.prizeJudgment.judge(lottoTicket, lottoWinningNumber))
+                .filter(lottoPrize -> lottoPrize.prizeJudgment.judge(lottoNumbers, lottoWinningNumber))
                 .findFirst()
                 .orElseThrow(IllegalStateException::new);
     }

@@ -17,7 +17,7 @@ public class LottoController {
 
     public void startLotto() {
         Cost cost = lottoInputView.readCost();
-        List<LottoTicket> lottoTickets = lottoShop.buyLottoTickets(cost);
+        List<LottoNumbers> lottoTickets = lottoShop.buyLottoTickets(cost);
         lottoOutputView.printLottoTickets(lottoTickets);
         LottoWinningNumber lottoWinningNumber = lottoInputView.readWinningNumber();
 

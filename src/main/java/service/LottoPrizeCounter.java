@@ -2,7 +2,7 @@ package service;
 
 import domain.lotto.LottoPrize;
 import domain.lotto.LottoPrizeResult;
-import domain.lotto.LottoTicket;
+import domain.lotto.LottoNumbers;
 import domain.lotto.LottoWinningNumber;
 
 import java.util.Arrays;
@@ -17,13 +17,13 @@ public class LottoPrizeCounter {
         this.lottoWinningNumber = lottoWinningNumber;
     }
 
-    public LottoPrizeResult countPrize(List<LottoTicket> lottoTickets) {
+    public LottoPrizeResult countPrize(List<LottoNumbers> lottoTickets) {
         Map<LottoPrize, Integer> prizeCounts = new HashMap<>();
         Arrays.stream(LottoPrize.values())
                 .forEach(prize -> prizeCounts.put(prize, 0));
 
         lottoTickets.stream()
-                .map(lottoTicket -> LottoPrize.matchLottoTicket(lottoTicket, lottoWinningNumber))
+                .map(lottoNumbers -> LottoPrize.matchLottoNumbers(lottoNumbers, lottoWinningNumber))
                 .forEach(lottoPrize -> prizeCounts.computeIfPresent(lottoPrize, (prize, count) -> count + 1));
 
         return new LottoPrizeResult(prizeCounts);

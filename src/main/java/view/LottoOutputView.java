@@ -8,10 +8,10 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class LottoOutputView {
-    public void printLottoTickets(List<LottoTicket> lottoTickets) {
+    public void printLottoTickets(List<LottoNumbers> lottoTickets) {
         printLottoTicketPurchaseCount(lottoTickets);
         lottoTickets.stream()
-                .map(LottoTicket::getLottoNumbers)
+                .map(LottoNumbers::getLottoNumbers)
                 .forEach(this::printLottoNumbers);
     }
 
@@ -35,7 +35,7 @@ public class LottoOutputView {
                 LottoPrize.FIRST_PRIZE.getPrizeMoney(), prizeCounts.get(LottoPrize.FIRST_PRIZE));
     }
 
-    private void printLottoTicketPurchaseCount(List<LottoTicket> lottoTickets) {
+    private void printLottoTicketPurchaseCount(List<LottoNumbers> lottoTickets) {
         System.out.println(lottoTickets.size() + "개를 구매했습니다.");
     }
 

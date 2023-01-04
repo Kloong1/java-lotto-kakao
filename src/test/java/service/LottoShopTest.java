@@ -1,13 +1,12 @@
 package service;
 
 import domain.lotto.Cost;
-import domain.lotto.LottoTicket;
+import domain.lotto.LottoNumbers;
 import domain.lotto.LottoTicketRandomGenerator;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import service.LottoShop;
 
 import java.util.List;
 
@@ -20,8 +19,8 @@ public class LottoShopTest {
         Cost cost = new Cost(money);
         LottoShop lottoShop = new LottoShop(new LottoTicketRandomGenerator());
 
-        List<LottoTicket> lottoTickets = lottoShop.buyLottoTickets(cost);
-        Assertions.assertThat(lottoTickets)
+        List<LottoNumbers> lottoNumbers = lottoShop.buyLottoTickets(cost);
+        Assertions.assertThat(lottoNumbers)
                 .hasSize(money / LottoShop.LOTTO_PRICE);
     }
 

@@ -41,8 +41,8 @@ public class LottoPrizeCounterTest {
     @DisplayName("로또 당첨 결과를 반환한다.")
     @Test
     void countPrize() {
-        List<LottoTicket> lottoTickets = List.of(
-                new LottoTicket(Set.of(
+        List<LottoNumbers> lottoTickets = List.of(
+                new LottoNumbers(Set.of(
                         new LottoNumber(1),
                         new LottoNumber(2),
                         new LottoNumber(3),

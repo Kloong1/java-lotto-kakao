@@ -1,9 +1,9 @@
 package domain.judgment;
 
-import domain.lotto.LottoTicket;
+import domain.lotto.LottoNumbers;
 import domain.lotto.LottoWinningNumber;
 
 public interface LottoPrizeJudgment {
 
-    boolean judge(LottoTicket lottoTicket, LottoWinningNumber lottoWinningNumber);
+    boolean judge(LottoNumbers lottoNumbers, LottoWinningNumber lottoWinningNumber);
 }

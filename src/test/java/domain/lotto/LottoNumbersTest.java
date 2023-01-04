@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.*;
 
-public class LottoTicketTest {
+public class LottoNumbersTest {
 
     @Test
     @DisplayName("로또 번호가 6개가 아니면 예외가 발생한다")
@@ -19,20 +19,20 @@ public class LottoTicketTest {
                 new LottoNumber(5)
         );
 
-        Set<LottoNumber> lottoNumberSeven = new HashSet<>(lottoNumbersFive);
-        lottoNumberSeven.add(new LottoNumber(6));
-        lottoNumberSeven.add(new LottoNumber(7));
+        Set<LottoNumber> lottoNumbersSeven = new HashSet<>(lottoNumbersFive);
+        lottoNumbersSeven.add(new LottoNumber(6));
+        lottoNumbersSeven.add(new LottoNumber(7));
 
-        Set<LottoNumber> lottoNumberOne = Set.of(new LottoNumber(1));
+        Set<LottoNumber> lottoNumbersOne = Set.of(new LottoNumber(1));
 
         Assertions.assertThatIllegalArgumentException()
-                .isThrownBy(() -> new LottoTicket(lottoNumbersFive));
+                .isThrownBy(() -> new LottoNumbers(lottoNumbersFive));
         Assertions.assertThatIllegalArgumentException()
-                .isThrownBy(() -> new LottoTicket(lottoNumberSeven));
+                .isThrownBy(() -> new LottoNumbers(lottoNumbersSeven));
         Assertions.assertThatIllegalArgumentException()
-                .isThrownBy(() -> new LottoTicket(lottoNumberOne));
+                .isThrownBy(() -> new LottoNumbers(lottoNumbersOne));
         Assertions.assertThatIllegalArgumentException()
-                .isThrownBy(() -> new LottoTicket(Collections.emptySet()));
+                .isThrownBy(() -> new LottoNumbers(Collections.emptySet()));
     }
 
     @Test
@@ -49,6 +49,6 @@ public class LottoTicketTest {
         lottoNumbers.add(new LottoNumber(1)); //duplicate
 
         Assertions.assertThatIllegalArgumentException()
-                .isThrownBy(() -> new LottoTicket(lottoNumbers));
+                .isThrownBy(() -> new LottoNumbers(lottoNumbers));
     }
 }
