@@ -15,7 +15,7 @@ public class LottoOutputView {
     }
 
     public void printLottoResult(Map<LottoPrize, Integer> prizeCounts, LottoEarningRate lottoEarningRate) {
-        System.out.println("\n당첨 통계");
+        System.out.println(System.lineSeparator() + "당첨 통계");
         System.out.println("----------");
         printPrizeCount(prizeCounts);
         printEarningRate(lottoEarningRate);
@@ -47,6 +47,6 @@ public class LottoOutputView {
     }
 
     private void printEarningRate(LottoEarningRate lottoEarningRate) {
-        System.out.printf("총 수익률은 %.2f입니다.\n", lottoEarningRate.getEarningRate());
+        System.out.printf("총 수익률은 %.2f입니다.%n", lottoEarningRate.getEarningRate());
     }
 }
