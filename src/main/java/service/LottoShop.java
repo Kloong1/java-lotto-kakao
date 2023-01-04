@@ -6,6 +6,7 @@ import domain.lotto.LottoTicketGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class LottoShop {
 
@@ -19,7 +20,7 @@ public class LottoShop {
 
     public List<LottoTicket> buyLottoTickets(Cost cost) {
         validateCost(cost);
-        ArrayList<LottoTicket> lottoTickets = new ArrayList<>();
+        List<LottoTicket> lottoTickets = new ArrayList<>();
         for (int i = 0; i < cost.countAvailablePurchases(LOTTO_PRICE); i++) {
             lottoTickets.add(lottoTicketGenerator.generate());
         }
