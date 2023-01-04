@@ -13,7 +13,7 @@ public class LottoController {
 
     private final LottoInputView lottoInputView = new LottoInputView();
     private final LottoOutputView lottoOutputView = new LottoOutputView();
-    private final LottoShop lottoShop = new LottoShop(new LottoTicketRandomGenerator());
+    private final LottoShop lottoShop = new LottoShop(new LottoNumbersRandomGenerator());
 
     public void startLotto() {
         Cost cost = lottoInputView.readCost();

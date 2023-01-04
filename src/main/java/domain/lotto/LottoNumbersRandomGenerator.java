@@ -6,7 +6,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class LottoTicketRandomGenerator implements LottoTicketGenerator {
+public class LottoNumbersRandomGenerator implements LottoNumbersGenerator {
 
     @Override
     public LottoNumbers generate(int lowerBound, int upperBound) {
