@@ -52,7 +52,7 @@ public class LottoNumbersRandomGeneratorTest {
     void generate() {
         int lowerBound = 1;
         int upperBound = 6;
-        LottoNumbersRandomGenerator lottoNumbersRandomGenerator =
+        LottoNumbersGenerator lottoNumbersGenerator =
                 new LottoNumbersRandomGenerator(lowerBound, upperBound);
 
         LottoNumbers expected = new LottoNumbers(Set.of(
@@ -64,7 +64,7 @@ public class LottoNumbersRandomGeneratorTest {
                 new LottoNumber(6)
         ));
 
-        LottoNumbers lottoNumbers = lottoNumbersRandomGenerator.generate();
+        LottoNumbers lottoNumbers = lottoNumbersGenerator.generate();
 
         assertThat(lottoNumbers).isEqualTo(expected);
     }
