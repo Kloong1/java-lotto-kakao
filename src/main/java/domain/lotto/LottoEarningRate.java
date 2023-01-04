@@ -1,6 +1,7 @@
 package domain.lotto;
 
 public class LottoEarningRate {
+    public static final double MINIMUM_EARNING_RATE = 0.0;
     private final double earningRate;
 
     public LottoEarningRate(double earningRate) {
@@ -13,7 +14,7 @@ public class LottoEarningRate {
     }
 
     private void validatePositive(double earningRate) {
-        if (earningRate < 0.0) {
+        if (earningRate < MINIMUM_EARNING_RATE) {
             throw new IllegalArgumentException("수익률은 0 이상이어야 합니다.");
         }
     }
