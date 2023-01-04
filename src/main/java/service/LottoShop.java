@@ -22,7 +22,7 @@ public class LottoShop {
     public List<LottoNumbers> buyLottoTickets(Cost cost) {
         validateCost(cost);
         return IntStream.range(0, cost.countAvailablePurchases(LOTTO_PRICE))
-                .mapToObj(idx -> lottoNumbersGenerator.generate(LottoNumber.MINIMUM_NUMBER, LottoNumber.MAXIMUM_NUMBER))
+                .mapToObj(idx -> lottoNumbersGenerator.generate())
                 .collect(Collectors.toList());
     }
 

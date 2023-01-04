@@ -1,6 +1,7 @@
 package service;
 
 import domain.lotto.Cost;
+import domain.lotto.LottoNumber;
 import domain.lotto.LottoNumbers;
 import domain.lotto.LottoNumbersRandomGenerator;
 import org.assertj.core.api.Assertions;
@@ -17,7 +18,8 @@ public class LottoShopTest {
     @ValueSource(ints = {3_000, 1_001, 15_999})
     void buyLottoTickets(int money) {
         Cost cost = new Cost(money);
-        LottoShop lottoShop = new LottoShop(new LottoNumbersRandomGenerator());
+        LottoShop lottoShop = new LottoShop(
+                new LottoNumbersRandomGenerator(LottoNumber.MINIMUM_NUMBER, LottoNumber.MAXIMUM_NUMBER));
 
         List<LottoNumbers> lottoNumbers = lottoShop.buyLottoTickets(cost);
         Assertions.assertThat(lottoNumbers)
@@ -27,9 +29,10 @@ public class LottoShopTest {
     @ParameterizedTest
     @ValueSource(ints = {1, LottoShop.LOTTO_PRICE - 1})
     @DisplayName("로또를 한 장도 못사는 경우에는 예외가 발생한다.")
-    public void buyLottoTickets_throw(int money) {
+    void buyLottoTickets_throw(int money) {
         Cost cost = new Cost(money);
-        LottoShop lottoShop = new LottoShop(new LottoNumbersRandomGenerator());
+        LottoShop lottoShop = new LottoShop(
+                new LottoNumbersRandomGenerator(LottoNumber.MINIMUM_NUMBER, LottoNumber.MAXIMUM_NUMBER));
 
         Assertions.assertThatIllegalArgumentException()
                 .isThrownBy(() -> lottoShop.buyLottoTickets(cost));
