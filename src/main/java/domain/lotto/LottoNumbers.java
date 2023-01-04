@@ -17,6 +17,10 @@ public class LottoNumbers {
         return new HashSet<>(lottoNumbers);
     }
 
+    public boolean contains(LottoNumber lottoNumber) {
+        return lottoNumbers.contains(lottoNumber);
+    }
+
     private void validateSize(Set<LottoNumber> lottoNumbers) {
         if (lottoNumbers.size() != LOTTO_NUMBERS_SIZE) {
             throw new IllegalArgumentException("로또 번호는 6개여야 합니다.");
