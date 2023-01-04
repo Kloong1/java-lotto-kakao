@@ -1,10 +1,5 @@
 package domain.lotto;
 
-import util.ListUtils;
-
-import java.util.Collections;
-import java.util.List;
-
 public class LottoWinningNumber {
 
     private final LottoNumbers lottoNumbers;

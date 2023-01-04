@@ -1,7 +1,6 @@
 package service;
 
 import domain.lotto.Cost;
-import domain.lotto.LottoNumber;
 import domain.lotto.LottoNumbers;
 import domain.lotto.LottoNumbersGenerator;
 
