@@ -88,4 +88,40 @@ public class LottoNumbersTest {
         boolean result = lottoNumbers.contains(new LottoNumber(number));
         assertThat(result).isFalse();
     }
+
+    @DisplayName("같은 로또 번호의 개수를 반환한다")
+    @Test
+    void countCommonLottoNumbers() {
+        LottoNumbers lottoNumbers1 = new LottoNumbers(Set.of(
+                new LottoNumber(1),
+                new LottoNumber(2),
+                new LottoNumber(3),
+                new LottoNumber(4),
+                new LottoNumber(5),
+                new LottoNumber(6)
+        ));
+
+        LottoNumbers lottoNumbers2 = new LottoNumbers(Set.of(
+                new LottoNumber(1),
+                new LottoNumber(12),
+                new LottoNumber(13),
+                new LottoNumber(14),
+                new LottoNumber(15),
+                new LottoNumber(16)
+        ));
+
+        LottoNumbers lottoNumbers3 = new LottoNumbers(Set.of(
+                new LottoNumber(1),
+                new LottoNumber(2),
+                new LottoNumber(3),
+                new LottoNumber(13),
+                new LottoNumber(8),
+                new LottoNumber(9)
+        ));
+
+        assertThat(lottoNumbers1.countCommonLottoNumbers(lottoNumbers1)).isEqualTo(6);
+        assertThat(lottoNumbers1.countCommonLottoNumbers(lottoNumbers2)).isEqualTo(1);
+        assertThat(lottoNumbers1.countCommonLottoNumbers(lottoNumbers3)).isEqualTo(3);
+        assertThat(lottoNumbers2.countCommonLottoNumbers(lottoNumbers3)).isEqualTo(2);
+    }
 }
