@@ -1,5 +1,5 @@
 package domain.lotto;
 
 public interface LottoTicketGenerator {
-    LottoNumbers generate();
+    LottoNumbers generate(int lowerBound, int upperBound);
 }

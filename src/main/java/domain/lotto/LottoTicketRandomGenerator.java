@@ -9,8 +9,8 @@ import java.util.stream.IntStream;
 public class LottoTicketRandomGenerator implements LottoTicketGenerator {
 
     @Override
-    public LottoNumbers generate() {
-        List<LottoNumber> lottoNumberCandidates = IntStream.range(LottoNumber.MINIMUM_NUMBER, LottoNumber.MAXIMUM_NUMBER)
+    public LottoNumbers generate(int lowerBound, int upperBound) {
+        List<LottoNumber> lottoNumberCandidates = IntStream.range(lowerBound, upperBound)
                 .mapToObj(LottoNumber::new)
                 .collect(Collectors.toList());
         Collections.shuffle(lottoNumberCandidates);
