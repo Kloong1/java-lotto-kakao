@@ -3,6 +3,7 @@ package service;
 import domain.lotto.Cost;
 import domain.lotto.LottoNumbers;
 import domain.lotto.LottoNumbersGenerator;
+import domain.lotto.LottoTickets;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,11 +19,12 @@ public class LottoShop {
         this.lottoNumbersGenerator = lottoNumbersGenerator;
     }
 
-    public List<LottoNumbers> buyLottoTickets(Cost cost) {
+    public LottoTickets buyLottoTickets(Cost cost) {
         validateCost(cost);
-        return IntStream.range(0, cost.countAvailablePurchases(LOTTO_PRICE))
+        List<LottoNumbers> tickets = IntStream.range(0, cost.countAvailablePurchases(LOTTO_PRICE))
                 .mapToObj(idx -> lottoNumbersGenerator.generate())
                 .collect(Collectors.toList());
+        return new LottoTickets(tickets);
     }
 
     private void validateCost(Cost cost) {

@@ -2,15 +2,14 @@ package view;
 
 import domain.lotto.*;
 
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 public class LottoOutputView {
-    public void printLottoTickets(List<LottoNumbers> lottoTickets) {
-        printLottoTicketPurchaseCount(lottoTickets);
-        lottoTickets.stream()
+    public void printLottoTickets(LottoTickets lottoTickets) {
+        System.out.println(lottoTickets.getTicketCount() + "개를 구매했습니다.");
+        lottoTickets.getTickets().stream()
                 .map(LottoNumbers::getNumbers)
                 .forEach(this::printLottoNumbers);
     }
@@ -33,10 +32,6 @@ public class LottoOutputView {
                 LottoPrize.SECOND_PRIZE.getPrizeMoney(), prizeCounts.get(LottoPrize.SECOND_PRIZE));
         System.out.printf("6개 일치 (%d원)- %d개%n",
                 LottoPrize.FIRST_PRIZE.getPrizeMoney(), prizeCounts.get(LottoPrize.FIRST_PRIZE));
-    }
-
-    private void printLottoTicketPurchaseCount(List<LottoNumbers> lottoTickets) {
-        System.out.println(lottoTickets.size() + "개를 구매했습니다.");
     }
 
     private void printLottoNumbers(Set<LottoNumber> lottoNumbers) {

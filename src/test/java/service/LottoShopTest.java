@@ -1,15 +1,11 @@
 package service;
 
-import domain.lotto.Cost;
-import domain.lotto.LottoNumber;
-import domain.lotto.LottoNumbers;
-import domain.lotto.LottoNumbersRandomGenerator;
-import org.assertj.core.api.Assertions;
+import domain.lotto.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.util.List;
+import static org.assertj.core.api.Assertions.*;
 
 public class LottoShopTest {
 
@@ -21,9 +17,9 @@ public class LottoShopTest {
         LottoShop lottoShop = new LottoShop(
                 new LottoNumbersRandomGenerator(LottoNumber.MINIMUM_NUMBER, LottoNumber.MAXIMUM_NUMBER));
 
-        List<LottoNumbers> lottoNumbers = lottoShop.buyLottoTickets(cost);
-        Assertions.assertThat(lottoNumbers)
-                .hasSize(money / LottoShop.LOTTO_PRICE);
+        LottoTickets lottoTickets = lottoShop.buyLottoTickets(cost);
+        assertThat(lottoTickets.getTicketCount())
+                .isEqualTo(money / LottoShop.LOTTO_PRICE);
     }
 
     @ParameterizedTest
@@ -34,7 +30,7 @@ public class LottoShopTest {
         LottoShop lottoShop = new LottoShop(
                 new LottoNumbersRandomGenerator(LottoNumber.MINIMUM_NUMBER, LottoNumber.MAXIMUM_NUMBER));
 
-        Assertions.assertThatIllegalArgumentException()
+        assertThatIllegalArgumentException()
                 .isThrownBy(() -> lottoShop.buyLottoTickets(cost));
     }
 }
