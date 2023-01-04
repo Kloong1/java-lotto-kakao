@@ -1,37 +1,25 @@
 package domain.lotto;
 
-import util.ListUtils;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class LottoTicket {
 
     public static final int LOTTO_NUMBERS_SIZE = 6;
 
-    private final List<LottoNumber> lottoNumbers;
+    private final Set<LottoNumber> lottoNumbers;
 
-    public LottoTicket(List<LottoNumber> lottoNumbers) {
+    public LottoTicket(Set<LottoNumber> lottoNumbers) {
         validateSize(lottoNumbers);
-        validateDuplicates(lottoNumbers);
-        Collections.sort(lottoNumbers);
-        this.lottoNumbers = new ArrayList<>(lottoNumbers);
+        this.lottoNumbers = new HashSet<>(lottoNumbers);
     }
 
     public List<LottoNumber> getLottoNumbers() {
-        return lottoNumbers;
+        return new ArrayList<>(lottoNumbers);
     }
 
-    private void validateSize(List<LottoNumber> lottoNumbers) {
+    private void validateSize(Set<LottoNumber> lottoNumbers) {
         if (lottoNumbers.size() != LOTTO_NUMBERS_SIZE) {
             throw new IllegalArgumentException("로또 번호는 6개여야 합니다.");
-        }
-    }
-
-    private void validateDuplicates(List<LottoNumber> lottoNumbers) {
-        if (ListUtils.hasDuplicates(lottoNumbers)) {
-            throw new IllegalArgumentException("중복된 로또 번호가 있습니다.");
         }
     }
 }

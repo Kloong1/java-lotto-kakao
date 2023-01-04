@@ -10,6 +10,7 @@ import domain.lotto.LottoPrizeResult;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
 public class LottoPrizeCounterTest {
 
@@ -41,7 +42,7 @@ public class LottoPrizeCounterTest {
     @Test
     void countPrize() {
         List<LottoTicket> lottoTickets = List.of(
-                new LottoTicket(Arrays.asList(
+                new LottoTicket(Set.of(
                         new LottoNumber(1),
                         new LottoNumber(2),
                         new LottoNumber(3),
