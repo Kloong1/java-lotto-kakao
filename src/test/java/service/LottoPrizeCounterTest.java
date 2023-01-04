@@ -52,12 +52,9 @@ public class LottoPrizeCounterTest {
         );
 
         HashMap<LottoPrize, Integer> expectedMap = new HashMap<>();
+        Arrays.stream(LottoPrize.values())
+                .forEach(lottoPrize -> expectedMap.put(lottoPrize, 0));
         expectedMap.put(LottoPrize.FIRST_PRIZE, 1);
-        expectedMap.put(LottoPrize.SECOND_PRIZE, 0);
-        expectedMap.put(LottoPrize.THIRD_PRIZE, 0);
-        expectedMap.put(LottoPrize.FOURTH_PRIZE, 0);
-        expectedMap.put(LottoPrize.FIFTH_PRIZE, 0);
-        expectedMap.put(LottoPrize.NONE_PRIZE, 0);
 
         LottoPrizeResult expected = new LottoPrizeResult(expectedMap);
 
