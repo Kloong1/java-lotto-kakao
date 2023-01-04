@@ -120,4 +120,17 @@ public class LottoTicketsTest {
 
         Assertions.assertThat(result).isEqualTo(expected);
     }
+
+    @DisplayName("로또 복권 개수를 반환한다")
+    @ParameterizedTest
+    @ValueSource(ints = {1, 10, 100})
+    void getTicketCount(int ticketCount) {
+        List<LottoNumbers> tickets = IntStream.range(0, ticketCount)
+                .mapToObj(i -> lottoNumbersGenerator.generate())
+                .collect(Collectors.toList());
+
+        LottoTickets lottoTickets = new LottoTickets(tickets);
+
+        assertThat(lottoTickets.getTicketCount()).isEqualTo(ticketCount);
+    }
 }
