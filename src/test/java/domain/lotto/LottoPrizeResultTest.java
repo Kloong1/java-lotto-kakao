@@ -1,12 +1,10 @@
 package domain.lotto;
 
-import domain.lotto.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import domain.lotto.LottoPrizeResult;
 import service.LottoShop;
 
 import java.util.HashMap;
@@ -55,7 +53,7 @@ public class LottoPrizeResultTest {
 
         int floor = 1_000_000;
         assertThat(Math.floor(result.getEarningRate() * floor))
-                .isEqualTo(Math.floor(result.getEarningRate() * floor));
+                .isEqualTo(Math.floor(expected.getEarningRate() * floor));
     }
 
     @DisplayName("로또 구매 횟수가 0 이하이면 예외가 발생한다")
