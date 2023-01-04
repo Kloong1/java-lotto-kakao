@@ -1,4 +1,4 @@
-package service;
+package domain.lotto;
 
 import domain.lotto.Cost;
 import domain.lotto.LottoNumbers;

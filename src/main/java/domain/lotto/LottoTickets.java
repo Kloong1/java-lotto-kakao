@@ -1,7 +1,5 @@
 package domain.lotto;
 
-import service.LottoShop;
-
 import java.util.*;
 
 public class LottoTickets {
