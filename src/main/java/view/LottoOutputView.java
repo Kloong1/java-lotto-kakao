@@ -7,8 +7,12 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class LottoOutputView {
-    public void printLottoTickets(LottoTickets lottoTickets) {
+
+    public void printLottoTicketPurchaseCount(LottoTickets lottoTickets) {
         System.out.println(lottoTickets.getTicketCount() + "개를 구매했습니다.");
+    }
+
+    public void printLottoTickets(LottoTickets lottoTickets) {
         lottoTickets.getTickets().stream()
                 .map(LottoNumbers::getNumbers)
                 .forEach(this::printLottoNumbers);
@@ -19,6 +23,15 @@ public class LottoOutputView {
         System.out.println("----------");
         printPrizeCount(prizeCounts);
         printEarningRate(lottoEarningRate);
+    }
+
+    private void printLottoNumbers(Set<LottoNumber> lottoNumbers) {
+        String numbers = lottoNumbers.stream()
+                .map(LottoNumber::getNumber)
+                .sorted()
+                .map(String::valueOf)
+                .collect(Collectors.joining(", "));
+        System.out.println("[" + numbers + "]");
     }
 
     private void printPrizeCount(Map<LottoPrize, Integer> prizeCounts) {
@@ -32,15 +45,6 @@ public class LottoOutputView {
                 LottoPrize.SECOND_PRIZE.getPrizeMoney(), prizeCounts.get(LottoPrize.SECOND_PRIZE));
         System.out.printf("6개 일치 (%d원)- %d개%n",
                 LottoPrize.FIRST_PRIZE.getPrizeMoney(), prizeCounts.get(LottoPrize.FIRST_PRIZE));
-    }
-
-    private void printLottoNumbers(Set<LottoNumber> lottoNumbers) {
-        String numbers = lottoNumbers.stream()
-                .map(LottoNumber::getNumber)
-                .sorted()
-                .map(String::valueOf)
-                .collect(Collectors.joining(", "));
-        System.out.println("[" + numbers + "]");
     }
 
     private void printEarningRate(LottoEarningRate lottoEarningRate) {
