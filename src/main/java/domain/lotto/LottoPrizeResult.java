@@ -40,4 +40,8 @@ public class LottoPrizeResult {
     public int hashCode() {
         return Objects.hash(prizeCounts);
     }
+
+    public int getCountOf(LottoPrize lottoPrize) {
+        return prizeCounts.get(lottoPrize);
+    }
 }

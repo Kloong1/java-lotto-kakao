@@ -33,4 +33,18 @@ public class LottoPrizeResultTest {
         prizeCounts.remove(LottoPrize.FIRST_PRIZE);
         assertThatIllegalArgumentException().isThrownBy(() -> new LottoPrizeResult(prizeCounts));
     }
+
+    @DisplayName("넘겨받은 등수의 카운트를 반환한다")
+    @Test
+    void getCountOf() {
+        prizeCounts.put(LottoPrize.FIRST_PRIZE, 1);
+        prizeCounts.put(LottoPrize.SECOND_PRIZE, 2);
+        prizeCounts.put(LottoPrize.THIRD_PRIZE, 3);
+
+        LottoPrizeResult lottoPrizeResult = new LottoPrizeResult(prizeCounts);
+
+        assertThat(lottoPrizeResult.getCountOf(LottoPrize.FIRST_PRIZE)).isEqualTo(1);
+        assertThat(lottoPrizeResult.getCountOf(LottoPrize.SECOND_PRIZE)).isEqualTo(2);
+        assertThat(lottoPrizeResult.getCountOf(LottoPrize.THIRD_PRIZE)).isEqualTo(3);
+    }
 }
