@@ -9,7 +9,7 @@ public class LottoOutputView {
 
     public void printLottoTicketPurchaseCount(LottoTickets lottoTickets) {
         System.out.printf("수동으로 %d장, 자동으로 %d장을 구매했습니다.",
-                lottoTickets.countManualTickets(), lottoTickets.countManualTickets());
+                lottoTickets.countManualTickets(), lottoTickets.countAutoTickets());
     }
 
     public void printLottoTickets(LottoTickets lottoTickets) {
