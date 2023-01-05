@@ -24,22 +24,22 @@ public class LottoInputView {
         return new LottoTicketPurchaseAmount(purchaseAmount, purchaseCost);
     }
 
-    public LottoWinningNumber readWinningNumber() {
-        LottoNumbers lottoNumbers = readLottoNumbers();
+    public LottoWinningNumbers readLottoWinningNumbers() {
+        LottoNumbers winningNumbers = readWinningNumbers();
         LottoNumber bonusNumber = readBonusNumber();
-        return new LottoWinningNumber(lottoNumbers, bonusNumber);
+        return new LottoWinningNumbers(winningNumbers, bonusNumber);
     }
 
-    private LottoNumbers readLottoNumbers() {
+    private LottoNumbers readWinningNumbers() {
         System.out.println(System.lineSeparator() + "지난 주 당첨 번호를 입력해 주세요.");
         String input = sc.nextLine();
         String[] inputStrings = input.split(",");
-        Set<LottoNumber> lottoNumbers = Arrays.stream(inputStrings)
+        Set<LottoNumber> winningNumbers = Arrays.stream(inputStrings)
                 .map(String::trim)
                 .mapToInt(Integer::parseInt)
                 .mapToObj(LottoNumber::new)
                 .collect(Collectors.toSet());
-        return new LottoNumbers(lottoNumbers);
+        return new LottoNumbers(winningNumbers);
     }
 
     private LottoNumber readBonusNumber() {

@@ -69,7 +69,7 @@ public class LottoTicketsTest {
     void matchTickets1() {
         LottoTickets lottoTickets = new LottoTickets(List.of(lottoNumbers));
 
-        LottoWinningNumber lottoWinningNumber = new LottoWinningNumber(lottoNumbers, new LottoNumber(45));
+        LottoWinningNumbers lottoWinningNumbers = new LottoWinningNumbers(lottoNumbers, new LottoNumber(45));
 
         Map<LottoPrize, Integer> expectedMap = new EnumMap<>(LottoPrize.class);
         Arrays.stream(LottoPrize.values())
@@ -78,7 +78,7 @@ public class LottoTicketsTest {
 
         LottoPrizeResult expected = new LottoPrizeResult(expectedMap);
 
-        LottoPrizeResult result = lottoTickets.matchTickets(lottoWinningNumber);
+        LottoPrizeResult result = lottoTickets.matchTickets(lottoWinningNumbers);
 
         Assertions.assertThat(result).isEqualTo(expected);
     }
@@ -97,7 +97,7 @@ public class LottoTicketsTest {
                 new LottoNumber(45)
         ));
 
-        LottoWinningNumber lottoWinningNumber = new LottoWinningNumber(winningNumbers, new LottoNumber(6));
+        LottoWinningNumbers lottoWinningNumbers = new LottoWinningNumbers(winningNumbers, new LottoNumber(6));
 
         Map<LottoPrize, Integer> expectedMap = new EnumMap<>(LottoPrize.class);
         Arrays.stream(LottoPrize.values())
@@ -106,7 +106,7 @@ public class LottoTicketsTest {
 
         LottoPrizeResult expected = new LottoPrizeResult(expectedMap);
 
-        LottoPrizeResult result = lottoTickets.matchTickets(lottoWinningNumber);
+        LottoPrizeResult result = lottoTickets.matchTickets(lottoWinningNumbers);
 
         Assertions.assertThat(result).isEqualTo(expected);
     }

@@ -18,9 +18,9 @@ public class LottoController {
         LottoTickets lottoTickets = lottoShop.buyLottoTickets(cost);
         lottoOutputView.printLottoTicketPurchaseCount(lottoTickets);
         lottoOutputView.printLottoTickets(lottoTickets);
-        LottoWinningNumber lottoWinningNumber = lottoInputView.readWinningNumber();
+        LottoWinningNumbers lottoWinningNumbers = lottoInputView.readLottoWinningNumbers();
 
-        LottoPrizeResult lottoPrizeResult = lottoTickets.matchTickets(lottoWinningNumber);
+        LottoPrizeResult lottoPrizeResult = lottoTickets.matchTickets(lottoWinningNumbers);
         LottoEarningRate lottoEarningRate = new LottoEarningRate(lottoPrizeResult, lottoTickets);
         lottoOutputView.printLottoPrizeResult(lottoPrizeResult);
         lottoOutputView.printEarningRate(lottoEarningRate);
