@@ -1,6 +1,5 @@
 package domain.lotto;
 
-import domain.lotto.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -18,7 +17,7 @@ public class LottoShopTest {
                 new LottoNumbersRandomGenerator(LottoNumber.MINIMUM_NUMBER, LottoNumber.MAXIMUM_NUMBER));
 
         LottoTickets lottoTickets = lottoShop.buyLottoTickets(cost);
-        assertThat(lottoTickets.getTicketCount())
+        assertThat(lottoTickets.countAllTickets())
                 .isEqualTo(money / LottoShop.LOTTO_PRICE);
     }
 

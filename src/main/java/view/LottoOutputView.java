@@ -8,11 +8,11 @@ import java.util.stream.Collectors;
 public class LottoOutputView {
 
     public void printLottoTicketPurchaseCount(LottoTickets lottoTickets) {
-        System.out.println(lottoTickets.getTicketCount() + "개를 구매했습니다.");
+        System.out.println(lottoTickets.countAllTickets() + "개를 구매했습니다.");
     }
 
     public void printLottoTickets(LottoTickets lottoTickets) {
-        lottoTickets.getTickets().stream()
+        lottoTickets.getAllTickets().stream()
                 .map(LottoNumbers::getNumbers)
                 .forEach(this::printLottoNumbers);
     }

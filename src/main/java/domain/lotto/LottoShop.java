@@ -1,10 +1,5 @@
 package domain.lotto;
 
-import domain.lotto.Cost;
-import domain.lotto.LottoNumbers;
-import domain.lotto.LottoNumbersGenerator;
-import domain.lotto.LottoTickets;
-
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;

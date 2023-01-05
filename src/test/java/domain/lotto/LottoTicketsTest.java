@@ -121,7 +121,7 @@ public class LottoTicketsTest {
 
         LottoTickets lottoTickets = new LottoTickets(tickets);
 
-        assertThat(lottoTickets.getTicketCount()).isEqualTo(ticketCount);
+        assertThat(lottoTickets.countAllTickets()).isEqualTo(ticketCount);
     }
 
     @DisplayName("수동 로또 번호와 자동 로또 번호로 LottoTickets를 생성한다")
