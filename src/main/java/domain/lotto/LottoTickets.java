@@ -23,7 +23,7 @@ public class LottoTickets {
         return allTickets;
     }
 
-    public Cost calculatePurcaseCost() {
+    public Cost calculatePurchaseCost() {
         return new Cost(countAllTickets() * LottoShop.LOTTO_PRICE);
     }
 
