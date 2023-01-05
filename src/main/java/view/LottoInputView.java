@@ -24,6 +24,9 @@ public class LottoInputView {
     }
 
     public List<LottoNumbers> readManualLottoNumbers(LottoTicketPurchaseAmount lottoTicketPurchaseAmount) {
+        if (lottoTicketPurchaseAmount.isZero()) {
+            return Collections.emptyList();
+        }
         System.out.println(System.lineSeparator() + "수동으로 구매할 로또 번호를 입력해 주세요.");
         return IntStream.range(0, lottoTicketPurchaseAmount.getPurchaseAmount())
                 .mapToObj(idx -> readLottoNumbers())
