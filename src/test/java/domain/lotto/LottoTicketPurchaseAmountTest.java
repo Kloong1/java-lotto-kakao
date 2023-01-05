@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.assertj.core.api.Assertions.assertThatNoException;
 
 public class LottoTicketPurchaseAmountTest {
@@ -14,6 +15,15 @@ public class LottoTicketPurchaseAmountTest {
     void create(int purchaseAmount) {
         Cost cost = new Cost(10_000);
         assertThatNoException()
+                .isThrownBy(() -> new LottoTicketPurchaseAmount(purchaseAmount, cost));
+    }
+
+    @DisplayName("로또 구매 개수가 음수이면 예외가 발생한다")
+    @ParameterizedTest
+    @ValueSource(ints = {-1, -10})
+    void create_throw_negative(int purchaseAmount) {
+        Cost cost = new Cost(10_000);
+        assertThatIllegalArgumentException()
                 .isThrownBy(() -> new LottoTicketPurchaseAmount(purchaseAmount, cost));
     }
 }
