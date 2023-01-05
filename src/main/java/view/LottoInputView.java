@@ -18,7 +18,7 @@ public class LottoInputView {
     }
 
     public LottoTicketPurchaseAmount readLottoManualPurchaseAmount(Cost purchaseCost) {
-        System.out.println("수동으로 구매할 로또 수를 입력해주세요.");
+        System.out.println(System.lineSeparator() + "수동으로 구매할 로또 수를 입력해주세요.");
         int purchaseAmount = Integer.parseInt(sc.nextLine());
         return new LottoTicketPurchaseAmount(purchaseAmount, purchaseCost);
     }
