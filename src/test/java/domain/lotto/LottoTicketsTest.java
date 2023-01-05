@@ -58,7 +58,7 @@ public class LottoTicketsTest {
 
         LottoTickets lottoTickets = new LottoTickets(tickets);
 
-        Cost cost = lottoTickets.calculatePurcaseCost();
+        Cost cost = lottoTickets.calculatePurchaseCost();
 
         assertThat(cost).isEqualTo(new Cost(LottoShop.LOTTO_PRICE * ticketCount));
     }
