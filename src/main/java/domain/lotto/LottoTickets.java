@@ -3,19 +3,27 @@ package domain.lotto;
 import java.util.*;
 
 public class LottoTickets {
-    private final List<LottoNumbers> tickets;
+    private final List<LottoNumbers> autoTickets;
+    private List<LottoNumbers> manualTickets;
 
-    public LottoTickets(List<LottoNumbers> tickets) {
-        validateTickets(tickets);
-        this.tickets = new ArrayList<>(tickets);
+    public LottoTickets(List<LottoNumbers> autoTickets) {
+        validateTickets(autoTickets);
+        this.autoTickets = autoTickets;
+    }
+
+    public LottoTickets(List<LottoNumbers> autoTickets, List<LottoNumbers> manualTickets) {
+        validateTickets(autoTickets);
+        validateTickets(manualTickets);
+        this.autoTickets = new ArrayList<>(autoTickets);
+        this.manualTickets = new ArrayList<>(manualTickets);
     }
 
     public List<LottoNumbers> getTickets() {
-        return new ArrayList<>(tickets);
+        return new ArrayList<>(autoTickets);
     }
 
     public Cost calculatePurcaseCost() {
-        return new Cost(tickets.size() * LottoShop.LOTTO_PRICE);
+        return new Cost(autoTickets.size() * LottoShop.LOTTO_PRICE);
     }
 
     public LottoPrizeResult matchTickets(LottoWinningNumber lottoWinningNumber) {
@@ -23,7 +31,7 @@ public class LottoTickets {
         Arrays.stream(LottoPrize.values())
                 .forEach(prize -> prizeCounts.put(prize, 0));
 
-        tickets.stream()
+        autoTickets.stream()
                 .map(lottoNumbers -> LottoPrize.matchLottoNumbers(lottoNumbers, lottoWinningNumber))
                 .forEach(lottoPrize -> prizeCounts.computeIfPresent(lottoPrize, (prize, count) -> count + 1));
 
@@ -31,7 +39,7 @@ public class LottoTickets {
     }
 
     public int getTicketCount() {
-        return tickets.size();
+        return autoTickets.size();
     }
 
     private void validateTickets(List<LottoNumbers> tickets) {

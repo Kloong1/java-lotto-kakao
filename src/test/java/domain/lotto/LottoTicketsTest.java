@@ -123,4 +123,15 @@ public class LottoTicketsTest {
 
         assertThat(lottoTickets.getTicketCount()).isEqualTo(ticketCount);
     }
+
+    @DisplayName("수동 로또 번호와 자동 로또 번호로 LottoTickets를 생성한다")
+    @Test
+    void create_manualAndAuto() {
+        LottoNumbers autoLottoNumbers = lottoNumbersGenerator.generate();
+        List<LottoNumbers> manualTickets = List.of(lottoNumbers);
+        List<LottoNumbers> autoTickets = List.of(autoLottoNumbers);
+
+        assertThatNoException()
+                .isThrownBy(() -> new LottoTickets(manualTickets, autoTickets));
+    }
 }
