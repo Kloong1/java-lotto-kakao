@@ -1,12 +1,8 @@
 package view;
 
-import domain.lotto.Cost;
-import domain.lotto.LottoNumber;
-import domain.lotto.LottoNumbers;
-import domain.lotto.LottoWinningNumber;
+import domain.lotto.*;
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -20,6 +16,12 @@ public class LottoInputView {
         int inputCost = Integer.parseInt(sc.nextLine());
 
         return new Cost(inputCost);
+    }
+
+    public LottoTicketPurchaseAmount readLottoManualPurchaseAmount(Cost purchaseCost) {
+        System.out.println("수동으로 구매할 로또 수를 입력해주세요.");
+        int purchaseAmount = Integer.parseInt(sc.nextLine());
+        return new LottoTicketPurchaseAmount(purchaseAmount, purchaseCost);
     }
 
     public LottoWinningNumber readWinningNumber() {
