@@ -9,6 +9,10 @@ public class LottoTicketPurchaseAmount {
         this.purchaseAmount = purchaseAmount;
     }
 
+    public int getPurchaseAmount() {
+        return purchaseAmount;
+    }
+
     private void validate(int purchaseAmount, Cost cost) {
         if (purchaseAmount < MINIMUM_PURCHASE_AMOUNT) {
             throw new IllegalArgumentException("로또 구매 개수는 0 이상이어야 합니다.");
