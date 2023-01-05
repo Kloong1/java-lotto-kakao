@@ -22,7 +22,7 @@ public class LottoNumbers {
     }
 
     public int countCommonLottoNumbers(LottoNumbers other) {
-        HashSet<LottoNumber> intersection = new HashSet<>(numbers);
+        Set<LottoNumber> intersection = new HashSet<>(numbers);
         intersection.retainAll(other.getNumbers());
         return intersection.size();
     }
