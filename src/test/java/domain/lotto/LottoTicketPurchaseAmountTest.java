@@ -26,4 +26,14 @@ public class LottoTicketPurchaseAmountTest {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> new LottoTicketPurchaseAmount(purchaseAmount, cost));
     }
+
+    @DisplayName("Cost로 구매 개수만큼의 로또를 구매할 수 없으면 예외 발생")
+    @ParameterizedTest
+    @ValueSource(ints = {0, 500, 1000, 5000, 7900, 9999})
+    void create_throw_cost(int money) {
+        int purchaseCount = 10;
+        Cost cost = new Cost(money);
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> new LottoTicketPurchaseAmount(purchaseCount, cost));
+    }
 }
