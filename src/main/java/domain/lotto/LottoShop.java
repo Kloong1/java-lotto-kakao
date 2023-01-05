@@ -22,6 +22,26 @@ public class LottoShop {
         return new LottoTickets(tickets);
     }
 
+    public LottoTickets buyLottoTickets(List<LottoNumbers> manualLottoNumbers, Cost cost) {
+        validate(manualLottoNumbers, cost);
+        List<LottoNumbers> autoLottoNumbers =
+                IntStream.range(0, countAvailableAutoLottoPurchase(manualLottoNumbers, cost))
+                .mapToObj(idx -> lottoNumbersGenerator.generate())
+                .collect(Collectors.toList());
+        return new LottoTickets(autoLottoNumbers, manualLottoNumbers);
+    }
+
+    private int countAvailableAutoLottoPurchase(List<LottoNumbers> manualLottoNumbers, Cost cost) {
+        return cost.countAvailablePurchases(LOTTO_PRICE) - manualLottoNumbers.size();
+    }
+
+
+    private void validate(List<LottoNumbers> manualLottoNumbers, Cost cost) {
+        if (cost.countAvailablePurchases(LOTTO_PRICE) < manualLottoNumbers.size()) {
+            throw new IllegalArgumentException("잔액이 부족합니다");
+        }
+    }
+
     private void validateCost(Cost cost) {
         if (cost.countAvailablePurchases(LOTTO_PRICE) <= 0) {
             throw new IllegalArgumentException("잔액이 부족합니다");
