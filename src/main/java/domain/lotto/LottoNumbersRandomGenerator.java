@@ -37,7 +37,7 @@ public class LottoNumbersRandomGenerator implements LottoNumbersGenerator {
     }
 
     private List<LottoNumber> generateLottoNumberCandidates() {
-        List<LottoNumber> lottoNumberCandidates = IntStream.range(lowerBound, upperBound + 1)
+        List<LottoNumber> lottoNumberCandidates = IntStream.rangeClosed(lowerBound, upperBound)
                 .mapToObj(LottoNumber::new)
                 .collect(Collectors.toList());
         Collections.shuffle(lottoNumberCandidates);
