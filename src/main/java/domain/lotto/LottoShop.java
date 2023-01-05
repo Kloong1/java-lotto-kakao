@@ -1,5 +1,6 @@
 package domain.lotto;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -15,11 +16,7 @@ public class LottoShop {
     }
 
     public LottoTickets buyLottoTickets(Cost cost) {
-        validateCost(cost);
-        List<LottoNumbers> tickets = IntStream.range(0, cost.countAvailablePurchases(LOTTO_PRICE))
-                .mapToObj(idx -> lottoNumbersGenerator.generate())
-                .collect(Collectors.toList());
-        return new LottoTickets(tickets);
+        return buyLottoTickets(Collections.emptyList(), cost);
     }
 
     public LottoTickets buyLottoTickets(List<LottoNumbers> manualLottoNumbers, Cost cost) {
@@ -35,15 +32,9 @@ public class LottoShop {
         return cost.countAvailablePurchases(LOTTO_PRICE) - manualLottoNumbers.size();
     }
 
-
     private void validate(List<LottoNumbers> manualLottoNumbers, Cost cost) {
-        if (cost.countAvailablePurchases(LOTTO_PRICE) < manualLottoNumbers.size()) {
-            throw new IllegalArgumentException("잔액이 부족합니다");
-        }
-    }
-
-    private void validateCost(Cost cost) {
-        if (cost.countAvailablePurchases(LOTTO_PRICE) <= 0) {
+        int availablePurchaseCount = cost.countAvailablePurchases(LOTTO_PRICE);
+        if (availablePurchaseCount <= 0 || availablePurchaseCount < manualLottoNumbers.size()) {
             throw new IllegalArgumentException("잔액이 부족합니다");
         }
     }
