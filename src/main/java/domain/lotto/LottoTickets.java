@@ -27,13 +27,13 @@ public class LottoTickets {
         return new Cost(countAllTickets() * LottoShop.LOTTO_PRICE);
     }
 
-    public LottoPrizeResult matchTickets(LottoWinningNumber lottoWinningNumber) {
+    public LottoPrizeResult matchTickets(LottoWinningNumbers lottoWinningNumbers) {
         Map<LottoPrize, Integer> prizeCounts = new EnumMap<>(LottoPrize.class);
         Arrays.stream(LottoPrize.values())
                 .forEach(prize -> prizeCounts.put(prize, 0));
 
         getAllTickets().stream()
-                .map(lottoNumbers -> LottoPrize.matchLottoNumbers(lottoNumbers, lottoWinningNumber))
+                .map(lottoNumbers -> LottoPrize.matchLottoNumbers(lottoNumbers, lottoWinningNumbers))
                 .forEach(lottoPrize -> prizeCounts.computeIfPresent(lottoPrize, (prize, count) -> count + 1));
 
         return new LottoPrizeResult(prizeCounts);
